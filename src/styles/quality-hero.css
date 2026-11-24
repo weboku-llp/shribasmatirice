@@ -1,0 +1,384 @@
+.quality-hero {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  grid-template-columns: minmax(0, 45fr) minmax(0, 55fr);
+  grid-template-rows: 1fr auto;
+  align-items: center;
+  min-height: clamp(630px, 48vw, 700px);
+  overflow: hidden;
+  padding-block: clamp(2.75rem, 4vw, 3.5rem);
+  background: var(--color-ivory);
+}
+
+/* Soft cream haze so the inspection photo blends into the copy — no hard split */
+.quality-hero::before {
+  content: '';
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgb(251 246 236 / 0.98) 0%,
+    rgb(251 246 236 / 0.94) 30%,
+    rgb(251 246 236 / 0.7) 44%,
+    rgb(251 246 236 / 0.28) 56%,
+    rgb(251 246 236 / 0) 68%
+  );
+  pointer-events: none;
+}
+
+/* Full-bleed photo (About-hero pattern). A light scale-out gives the
+   still-life air without breaking the ivory blend on the left. */
+.quality-hero__image {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  width: 100%;
+  max-width: none;
+  height: 100%;
+  object-fit: cover;
+  object-position: 58% 45%;
+  transform: scale(0.92);
+  transform-origin: 78% 48%;
+}
+
+.quality-hero__image[data-missing] {
+  visibility: hidden;
+}
+
+/* Warm stone glow on the RHS when the photo is not yet supplied */
+.quality-hero:has(.quality-hero__image[data-missing])::after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background:
+    radial-gradient(
+      ellipse 48% 70% at 78% 48%,
+      rgb(236 220 188 / 0.7),
+      transparent 72%
+    ),
+    linear-gradient(
+      100deg,
+      transparent 40%,
+      rgb(243 231 207 / 0.55) 100%
+    );
+  pointer-events: none;
+}
+
+.quality-hero__motif {
+  position: absolute;
+  z-index: 0;
+  top: 18%;
+  left: -2.25rem;
+  width: clamp(110px, 10vw, 150px);
+  height: auto;
+  color: var(--color-gold);
+  opacity: 0.24;
+  transform: rotate(-14deg);
+  pointer-events: none;
+}
+
+.quality-hero__copy {
+  position: relative;
+  z-index: 1;
+  grid-column: 1;
+  grid-row: 1;
+  max-width: 34rem;
+  margin-left: max(
+    var(--gutter),
+    calc((100vw - var(--container-max) - 2 * var(--gutter)) / 2 + var(--gutter))
+  );
+  padding-right: 1rem;
+}
+
+.quality-hero__eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 0 0 1.5rem;
+  color: var(--color-gold-dark);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+}
+
+.quality-hero__eyebrow::before,
+.quality-hero__eyebrow::after {
+  content: '';
+  flex: 0 0 2.5rem;
+  height: 1px;
+  background: var(--color-gold);
+}
+
+.quality-hero__eyebrow-icon {
+  flex-shrink: 0;
+  width: 1rem;
+  height: 1rem;
+  margin-right: -0.25rem;
+  color: var(--color-gold);
+  transform: rotate(28deg);
+}
+
+.quality-hero__title {
+  margin: 0;
+  font-size: clamp(2.75rem, 1rem + 3.8vw, 4.5rem);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.06;
+}
+
+.quality-hero__title-line {
+  display: block;
+}
+
+.quality-hero__title-line--accent {
+  color: var(--color-gold-deep);
+  font-style: italic;
+}
+
+.quality-hero__lead {
+  max-width: 32rem;
+  margin: 1.5rem 0 0;
+  color: var(--color-text);
+  font-size: clamp(1rem, 0.94rem + 0.25vw, 1.125rem);
+  line-height: 1.75;
+  text-wrap: pretty;
+}
+
+.quality-hero__pillars {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-column: 1;
+  grid-row: 2;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  max-width: 34rem;
+  margin: 2.25rem 0 0 max(
+    var(--gutter),
+    calc((100vw - var(--container-max) - 2 * var(--gutter)) / 2 + var(--gutter))
+  );
+  padding: 0 1rem 0 0;
+  list-style: none;
+}
+
+.quality-hero__pillar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 0.15rem 0.45rem;
+  text-align: center;
+}
+
+.quality-hero__pillar + .quality-hero__pillar {
+  border-left: 1px solid var(--color-border);
+}
+
+.quality-hero__seal {
+  display: grid;
+  place-items: center;
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at 50% 40%,
+    rgb(243 231 207 / 0.8),
+    rgb(198 164 103 / 0.26)
+  );
+  color: var(--color-gold-deep);
+}
+
+.quality-hero__seal svg {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.quality-hero__pillar-label {
+  color: var(--color-brown);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  line-height: 1.45;
+  text-transform: uppercase;
+}
+
+.quality-hero__pillar-label span {
+  display: block;
+  white-space: nowrap;
+}
+
+@media (max-width: 1199.98px) {
+  .quality-hero::before {
+    background: linear-gradient(
+      90deg,
+      rgb(251 246 236 / 0.98) 0%,
+      rgb(251 246 236 / 0.94) 34%,
+      rgb(251 246 236 / 0.7) 48%,
+      rgb(251 246 236 / 0.24) 60%,
+      rgb(251 246 236 / 0) 72%
+    );
+  }
+
+  .quality-hero__copy,
+  .quality-hero__pillars {
+    max-width: 30rem;
+  }
+
+  .quality-hero__lead {
+    max-width: 28rem;
+  }
+
+  .quality-hero__pillar {
+    padding-inline: 0.3rem;
+  }
+
+  .quality-hero__pillar-label {
+    letter-spacing: 0.08em;
+  }
+
+  .quality-hero__seal {
+    width: 3.125rem;
+    height: 3.125rem;
+  }
+
+  .quality-hero__seal svg {
+    width: 1.35rem;
+    height: 1.35rem;
+  }
+
+  .quality-hero__pillars {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    max-width: 22rem;
+    row-gap: 1.25rem;
+  }
+
+  .quality-hero__pillar + .quality-hero__pillar {
+    border-left: 0;
+  }
+
+  .quality-hero__pillar:nth-child(even) {
+    border-left: 1px solid var(--color-border);
+  }
+
+  .quality-hero__pillar:nth-child(n + 3) {
+    border-top: 1px solid var(--color-border);
+    padding-top: 1.1rem;
+  }
+}
+
+@media (max-width: 1023.98px) {
+  .quality-hero {
+    min-height: 600px;
+  }
+
+  .quality-hero__image {
+    object-position: 55% 44%;
+    transform: scale(0.94);
+    transform-origin: 75% 48%;
+  }
+}
+
+/* Mobile: copy → inspection photo → pillars */
+@media (max-width: 767.98px) {
+  .quality-hero {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    min-height: 0;
+    padding-block: 2.75rem 0;
+  }
+
+  .quality-hero::before {
+    background: linear-gradient(
+      180deg,
+      rgb(251 246 236 / 0.55) 0%,
+      rgb(251 246 236 / 0.2) 42%,
+      rgb(251 246 236 / 0) 62%
+    );
+  }
+
+  .quality-hero__image {
+    position: relative;
+    z-index: 0;
+    order: 2;
+    inset: auto;
+    width: 100%;
+    height: clamp(300px, 78vw, 360px);
+    margin-top: 1.75rem;
+    transform: none;
+    object-fit: cover;
+    object-position: 58% 40%;
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 12%);
+    mask-image: linear-gradient(to bottom, transparent 0, #000 12%);
+  }
+
+  .quality-hero__image[data-missing] {
+    visibility: hidden;
+    /* Keep the reserved band; the warm fill comes from the section background */
+    background: linear-gradient(
+      160deg,
+      rgb(243 231 207 / 0.75),
+      rgb(236 220 188 / 0.45)
+    );
+  }
+
+  .quality-hero:has(.quality-hero__image[data-missing]) {
+    background:
+      linear-gradient(
+        180deg,
+        var(--color-ivory) 0%,
+        var(--color-ivory) 48%,
+        rgb(243 231 207 / 0.55) 62%,
+        rgb(236 220 188 / 0.4) 78%,
+        var(--color-ivory) 100%
+      );
+  }
+
+  .quality-hero:has(.quality-hero__image[data-missing])::after {
+    display: none;
+  }
+
+  .quality-hero__motif {
+    display: none;
+  }
+
+  .quality-hero__copy {
+    order: 1;
+    max-width: none;
+    margin-inline: var(--gutter);
+    padding-right: 0;
+  }
+
+  .quality-hero__eyebrow {
+    gap: 0.6rem;
+    margin-bottom: 1.25rem;
+    font-size: 0.75rem;
+    letter-spacing: 0.26em;
+  }
+
+  .quality-hero__eyebrow::before,
+  .quality-hero__eyebrow::after {
+    flex-basis: 1.75rem;
+  }
+
+  .quality-hero__title {
+    font-size: clamp(2.75rem, 1.8rem + 3vw, 3.125rem);
+  }
+
+  .quality-hero__lead {
+    max-width: none;
+    margin-top: 1.25rem;
+    font-size: 1rem;
+  }
+
+  .quality-hero__pillars {
+    order: 3;
+    max-width: none;
+    margin: 0;
+    padding: 1.75rem var(--gutter) 2.5rem;
+    background: var(--color-ivory);
+  }
+}

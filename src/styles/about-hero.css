@@ -1,0 +1,220 @@
+.about-hero {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  align-items: center;
+  min-height: clamp(600px, 46vw, 680px);
+  overflow: hidden;
+  background: var(--color-ivory);
+}
+
+/* One full-bleed photograph, anchored right so the brass bowl and sack stay
+   in frame while the left side gives way to the cream haze. */
+.about-hero__image {
+  position: absolute;
+  z-index: -2;
+  inset: 0;
+  width: 100%;
+  max-width: none;
+  height: 100%;
+  object-fit: cover;
+  object-position: 90% 60%;
+}
+
+.about-hero::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgb(250 247 239 / 0.96) 0%,
+    rgb(250 247 239 / 0.9) 26%,
+    rgb(250 247 239 / 0.62) 40%,
+    rgb(250 247 239 / 0.24) 52%,
+    rgb(250 247 239 / 0) 64%
+  );
+  pointer-events: none;
+}
+
+.about-hero__motif {
+  position: absolute;
+  z-index: -1;
+  bottom: -1.5rem;
+  left: -1.25rem;
+  width: clamp(110px, 10vw, 150px);
+  height: auto;
+  color: var(--color-gold);
+  opacity: 0.28;
+  pointer-events: none;
+}
+
+.about-hero__inner {
+  width: 100%;
+  max-width: calc(var(--container-max) + 2 * var(--gutter));
+  margin-inline: auto;
+  padding: 4rem var(--gutter);
+}
+
+.about-hero__content {
+  max-width: 42rem;
+}
+
+.about-hero__eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 0 0 1.5rem;
+  color: var(--color-gold-dark);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+}
+
+.about-hero__eyebrow::after {
+  content: '';
+  flex: 0 0 4.5rem;
+  height: 1px;
+  background: var(--color-gold);
+}
+
+.about-hero__eyebrow-icon {
+  flex-shrink: 0;
+  width: 1rem;
+  height: 1rem;
+  color: var(--color-gold);
+  transform: rotate(28deg);
+}
+
+.about-hero__title {
+  margin: 0;
+  font-size: clamp(2.75rem, 1.2rem + 3.3vw, 4rem);
+  font-weight: 500;
+  letter-spacing: -0.015em;
+  line-height: 1.1;
+}
+
+.about-hero__title-line {
+  display: block;
+  text-wrap: balance;
+}
+
+.about-hero__title-line--accent {
+  color: var(--color-gold-deep);
+  font-style: italic;
+}
+
+.about-hero__lead {
+  max-width: 35.5rem;
+  margin: 1.5rem 0 0;
+  color: var(--color-text);
+  font-size: clamp(1.0625rem, 0.95rem + 0.3vw, 1.1875rem);
+  line-height: 1.65;
+}
+
+.about-hero__cta {
+  margin-top: 2.25rem;
+}
+
+@media (max-width: 1199.98px) {
+  .about-hero__lead {
+    max-width: 31rem;
+  }
+}
+
+/* Tablet: the photograph rests a little lower so the scene scales down and
+   the rice setup settles to the lower right, clear of the copy */
+@media (max-width: 1023.98px) {
+  .about-hero {
+    min-height: 600px;
+  }
+
+  .about-hero__image {
+    top: auto;
+    height: 82%;
+    object-position: 100% 60%;
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 22%);
+    mask-image: linear-gradient(to bottom, transparent 0, #000 22%);
+  }
+
+  .about-hero::before {
+    background: linear-gradient(
+      90deg,
+      rgb(250 247 239 / 0.96) 0%,
+      rgb(250 247 239 / 0.9) 36%,
+      rgb(250 247 239 / 0.6) 50%,
+      rgb(250 247 239 / 0.2) 62%,
+      rgb(250 247 239 / 0) 72%
+    );
+  }
+
+  .about-hero__content {
+    max-width: 30rem;
+  }
+
+  .about-hero__lead {
+    max-width: 27rem;
+    font-size: 1.0625rem;
+  }
+}
+
+/* Mobile: copy on cream above, the rice setup rising from the lower right */
+@media (max-width: 767.98px) {
+  .about-hero {
+    align-items: flex-start;
+    min-height: 700px;
+  }
+
+  .about-hero__image {
+    height: 52%;
+    object-position: 96% 70%;
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 40%);
+    mask-image: linear-gradient(to bottom, transparent 0, #000 40%);
+  }
+
+  .about-hero::before {
+    background: linear-gradient(
+      to bottom,
+      rgb(250 247 239 / 0.6) 0%,
+      rgb(250 247 239 / 0.5) 60%,
+      rgb(250 247 239 / 0) 76%
+    );
+  }
+
+  .about-hero__inner {
+    padding-block: 3rem 2rem;
+  }
+
+  .about-hero__content {
+    max-width: none;
+  }
+
+  .about-hero__eyebrow {
+    gap: 0.6rem;
+    margin-bottom: 1.25rem;
+    font-size: 0.75rem;
+    letter-spacing: 0.26em;
+  }
+
+  .about-hero__eyebrow::after {
+    flex-basis: 3rem;
+  }
+
+  .about-hero__title {
+    font-size: clamp(2.625rem, 1.9rem + 2.4vw, 3rem);
+  }
+
+  .about-hero__lead {
+    margin-top: 1.25rem;
+    font-size: 1rem;
+  }
+
+  .about-hero__cta {
+    margin-top: 1.75rem;
+  }
+
+  .about-hero__motif {
+    display: none;
+  }
+}

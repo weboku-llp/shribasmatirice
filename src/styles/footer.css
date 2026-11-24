@@ -1,0 +1,330 @@
+.site-footer {
+  border-top: 1px solid var(--color-border);
+  background: var(--color-ivory);
+}
+
+/* Upper area: link columns over the countryside artwork, whose scenic
+   lower band shows beneath the columns. */
+.site-footer__main {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding-bottom: clamp(9rem, 15vw, 13.5rem);
+  background:
+    radial-gradient(
+      ellipse 60% 70% at 30% 20%,
+      rgb(255 254 251 / 0.9),
+      transparent 70%
+    ),
+    var(--color-ivory);
+}
+
+.site-footer__main:has(.site-footer__art[data-missing]) {
+  padding-bottom: clamp(2.75rem, 4vw, 3.5rem);
+}
+
+.site-footer__art {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  width: 100%;
+  max-width: none;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 100%;
+}
+
+.site-footer__art[data-missing] {
+  visibility: hidden;
+}
+
+.site-footer__inner {
+  display: grid;
+  grid-template-columns:
+    minmax(0, 1.45fr) minmax(0, 0.8fr) minmax(0, 1fr)
+    minmax(0, 1.2fr);
+  max-width: calc(var(--container-max) + 2 * var(--gutter));
+  margin-inline: auto;
+  padding: clamp(3rem, 4.5vw, 4rem) var(--gutter) 0;
+}
+
+.site-footer__about {
+  padding-right: clamp(1.5rem, 3vw, 3rem);
+}
+
+.site-footer__column {
+  position: relative;
+  padding-left: clamp(1.5rem, 3vw, 2.75rem);
+}
+
+.site-footer__column::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 1px;
+  background: rgb(198 164 103 / 0.45);
+}
+
+/* Brand lockup: base styles come from header.css */
+.site-footer .brand {
+  gap: 0.9rem;
+}
+
+.site-footer .brand__crest {
+  width: 84px;
+}
+
+/* The logo file has a white ground; multiply lets the cream show through. */
+.site-footer .brand__crest img {
+  mix-blend-mode: multiply;
+}
+
+.site-footer .brand__name {
+  font-size: 1.85rem;
+}
+
+.site-footer .brand__descriptor {
+  font-size: 0.75rem;
+}
+
+.site-footer .brand__tagline {
+  display: block;
+  font-size: 0.625rem;
+  white-space: nowrap;
+}
+
+.site-footer__intro {
+  max-width: 22rem;
+  margin: 1.5rem 0 0;
+  color: var(--color-text);
+  font-size: 0.9375rem;
+  line-height: 1.65;
+}
+
+.site-footer__heading {
+  position: relative;
+  margin: 0 0 1.5rem;
+  padding-bottom: 0.85rem;
+  color: var(--color-gold-dark);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  line-height: 1.3;
+  text-transform: uppercase;
+}
+
+.site-footer__heading::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 1.75rem;
+  height: 1px;
+  background: var(--color-gold);
+}
+
+.site-footer__links,
+.site-footer__contact {
+  display: grid;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.site-footer__links {
+  gap: 0.75rem;
+}
+
+.site-footer__link {
+  color: var(--color-text);
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  text-decoration: none;
+  transition: color var(--transition);
+}
+
+.site-footer__link:hover {
+  color: var(--color-gold-deep);
+}
+
+.site-footer__contact {
+  gap: 1.25rem;
+}
+
+.site-footer__contact-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.site-footer__contact-icon {
+  flex-shrink: 0;
+  width: 1.25rem;
+  height: 1.25rem;
+  margin-top: 0.1rem;
+  color: var(--color-gold-deep);
+}
+
+.site-footer__address {
+  display: flex;
+  flex-direction: column;
+  color: var(--color-text);
+  font-size: 0.9375rem;
+  font-style: normal;
+  line-height: 1.6;
+}
+
+.site-footer__company {
+  color: var(--color-brown);
+  font-weight: 600;
+}
+
+/* Bottom bar */
+.site-footer__bar {
+  background: linear-gradient(180deg, #4a3321, #3b2817);
+  color: rgb(251 246 236 / 0.86);
+}
+
+.site-footer__bar-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem 2rem;
+  max-width: calc(var(--container-max) + 2 * var(--gutter));
+  margin-inline: auto;
+  padding: 1.15rem var(--gutter);
+}
+
+.site-footer__copyright {
+  margin: 0;
+  font-size: 0.875rem;
+}
+
+.site-footer__motto {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin: 0;
+  color: var(--color-gold);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+}
+
+.site-footer__motto-icon {
+  flex-shrink: 0;
+  width: 1rem;
+  height: 1rem;
+}
+
+/* Compact desktop */
+@media (max-width: 1199.98px) {
+  .site-footer .brand__crest {
+    width: 72px;
+  }
+
+  .site-footer .brand__name {
+    font-size: 1.65rem;
+  }
+}
+
+/* Tablet: brand on its own row, three columns beneath; the artwork
+   becomes a band along the bottom */
+@media (max-width: 1023.98px) {
+  .site-footer__main {
+    padding-bottom: 11rem;
+  }
+
+  .site-footer__art {
+    top: auto;
+    height: 18rem;
+    -webkit-mask-image: linear-gradient(to bottom, transparent, #000 35%);
+    mask-image: linear-gradient(to bottom, transparent, #000 35%);
+  }
+
+  .site-footer__inner {
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1fr) minmax(0, 1.3fr);
+    row-gap: 2.5rem;
+  }
+
+  .site-footer__about {
+    grid-column: 1 / -1;
+    padding-right: 0;
+  }
+
+  .site-footer__intro {
+    max-width: 32rem;
+  }
+
+  .site-footer__about + .site-footer__column {
+    padding-left: 0;
+  }
+
+  .site-footer__about + .site-footer__column::before {
+    content: none;
+  }
+
+  .site-footer .brand__crest {
+    width: 76px;
+  }
+
+  .site-footer .brand__name {
+    font-size: 1.65rem;
+  }
+}
+
+/* Mobile: links in two columns, contact full width */
+@media (max-width: 767.98px) {
+  .site-footer__main {
+    padding-bottom: 9rem;
+  }
+
+  .site-footer__art {
+    height: 15rem;
+  }
+
+  .site-footer__inner {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2.25rem 1.25rem;
+  }
+
+  .site-footer__column {
+    padding-left: 0;
+  }
+
+  .site-footer__column::before {
+    content: none;
+  }
+
+  .site-footer__column:last-child {
+    grid-column: 1 / -1;
+  }
+
+  .site-footer__heading {
+    font-size: 0.875rem;
+    letter-spacing: 0.14em;
+  }
+
+  .site-footer .brand__crest {
+    width: 68px;
+  }
+
+  .site-footer .brand__name {
+    font-size: 1.45rem;
+  }
+
+  .site-footer__bar-inner {
+    flex-direction: column;
+    justify-content: center;
+    padding-block: 1.1rem 1.25rem;
+    text-align: center;
+  }
+
+  .site-footer__motto {
+    letter-spacing: 0.16em;
+  }
+}

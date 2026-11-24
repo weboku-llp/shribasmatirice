@@ -1,0 +1,267 @@
+.contact-hero {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  grid-template-columns: minmax(0, 48fr) minmax(0, 52fr);
+  align-items: center;
+  min-height: clamp(650px, 48vw, 700px);
+  overflow: hidden;
+  padding-block: clamp(2.75rem, 4vw, 3.5rem);
+  background: var(--color-ivory);
+}
+
+.contact-hero__image {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  width: 100%;
+  max-width: none;
+  height: 100%;
+  object-fit: cover;
+  object-position: 28% 55%;
+}
+
+/* Soft ivory fade so copy stays readable — no hard split */
+.contact-hero__veil {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgb(251 246 236 / 0.98) 0%,
+    rgb(251 246 236 / 0.95) 28%,
+    rgb(251 246 236 / 0.78) 42%,
+    rgb(251 246 236 / 0.35) 54%,
+    rgb(251 246 236 / 0) 68%
+  );
+  pointer-events: none;
+}
+
+.contact-hero__motif {
+  position: absolute;
+  z-index: 0;
+  width: clamp(5.5rem, 8vw, 7.5rem);
+  height: auto;
+  color: var(--color-gold);
+  opacity: 0.2;
+  pointer-events: none;
+}
+
+.contact-hero__motif--top {
+  top: 1.5rem;
+  left: -0.75rem;
+  transform: rotate(-12deg);
+}
+
+.contact-hero__motif--bottom {
+  bottom: 2.5rem;
+  left: 4%;
+  width: clamp(4.5rem, 6.5vw, 6rem);
+  opacity: 0.14;
+  transform: scaleX(-1) rotate(8deg);
+}
+
+.contact-hero__contours {
+  position: absolute;
+  z-index: 0;
+  bottom: 0;
+  left: 0;
+  width: min(42%, 28rem);
+  height: 5.5rem;
+  color: var(--color-gold);
+  opacity: 0.12;
+  pointer-events: none;
+}
+
+.contact-hero__contours path {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.1;
+}
+
+.contact-hero__copy {
+  position: relative;
+  z-index: 1;
+  grid-column: 1;
+  max-width: 35rem;
+  margin-left: max(
+    var(--gutter),
+    calc((100vw - var(--container-max) - 2 * var(--gutter)) / 2 + var(--gutter))
+  );
+  padding-right: 1rem;
+}
+
+.contact-hero__eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 0 0 1.4rem;
+  color: var(--color-gold-dark);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+}
+
+.contact-hero__eyebrow::before,
+.contact-hero__eyebrow::after {
+  content: '';
+  flex: 0 0 2.5rem;
+  height: 1px;
+  background: var(--color-gold);
+}
+
+.contact-hero__eyebrow-icon {
+  flex-shrink: 0;
+  width: 1rem;
+  height: 1rem;
+  margin-right: -0.25rem;
+  color: var(--color-gold);
+  transform: rotate(28deg);
+}
+
+.contact-hero__title {
+  margin: 0;
+  font-size: clamp(2.75rem, 1.15rem + 3.2vw, 4.25rem);
+  font-weight: 500;
+  letter-spacing: -0.018em;
+  line-height: 1.1;
+}
+
+.contact-hero__title-line {
+  display: block;
+}
+
+.contact-hero__title-line--accent {
+  color: var(--color-gold-deep);
+  font-style: italic;
+}
+
+.contact-hero__lead {
+  max-width: 34rem;
+  margin: 1.25rem 0 0;
+  color: var(--color-text);
+  font-size: clamp(1.0625rem, 0.98rem + 0.25vw, 1.1875rem);
+  line-height: 1.7;
+  text-wrap: pretty;
+}
+
+.contact-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+  margin-top: 1.85rem;
+}
+
+.contact-hero__cta {
+  min-width: 10.5rem;
+}
+
+@media (max-width: 1199.98px) {
+  .contact-hero {
+    grid-template-columns: minmax(0, 48fr) minmax(0, 52fr);
+  }
+
+  .contact-hero__image {
+    object-position: 22% 55%;
+  }
+
+  .contact-hero__title {
+    font-size: clamp(2.5rem, 1rem + 2.8vw, 3.25rem);
+  }
+}
+
+@media (max-width: 1023.98px) {
+  .contact-hero {
+    min-height: 0;
+    padding-block: 3rem 3.25rem;
+  }
+
+  .contact-hero__veil {
+    background: linear-gradient(
+      90deg,
+      rgb(251 246 236 / 0.98) 0%,
+      rgb(251 246 236 / 0.92) 34%,
+      rgb(251 246 236 / 0.55) 50%,
+      rgb(251 246 236 / 0.12) 64%,
+      transparent 78%
+    );
+  }
+
+  .contact-hero__image {
+    object-position: 20% 52%;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .contact-hero {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    min-height: 0;
+    padding-block: 3rem 0;
+  }
+
+  .contact-hero__image {
+    position: relative;
+    z-index: 0;
+    order: 2;
+    width: 100%;
+    height: clamp(280px, 72vw, 380px);
+    margin-top: 1.75rem;
+    object-fit: cover;
+    object-position: 25% 50%;
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 14%);
+    mask-image: linear-gradient(to bottom, transparent 0, #000 14%);
+  }
+
+  .contact-hero__veil {
+    display: none;
+  }
+
+  .contact-hero__motif--bottom,
+  .contact-hero__contours {
+    display: none;
+  }
+
+  .contact-hero__motif--top {
+    opacity: 0.14;
+  }
+
+  .contact-hero__copy {
+    order: 1;
+    max-width: none;
+    margin-inline: var(--gutter);
+    padding-right: 0;
+  }
+
+  .contact-hero__eyebrow {
+    gap: 0.55rem;
+    margin-bottom: 1.15rem;
+    font-size: 0.75rem;
+    letter-spacing: 0.26em;
+  }
+
+  .contact-hero__eyebrow::before,
+  .contact-hero__eyebrow::after {
+    flex-basis: 1.75rem;
+  }
+
+  .contact-hero__title {
+    font-size: clamp(2.5rem, 1.7rem + 2.8vw, 2.75rem);
+  }
+
+  .contact-hero__lead {
+    font-size: 1.0625rem;
+  }
+
+  .contact-hero__actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .contact-hero__cta {
+    width: 100%;
+    min-width: 0;
+  }
+}

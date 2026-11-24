@@ -1,0 +1,336 @@
+.journey {
+  --journey-gap: clamp(1.5rem, 3.5vw, 3.5rem);
+  /* Arch height as a multiple of its width. */
+  --journey-arch-ratio: 1.36;
+
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding: clamp(4.5rem, 8vw, 6.5rem) 0 clamp(5rem, 8vw, 7rem);
+  border-top: 1px solid var(--color-border);
+  background:
+    radial-gradient(
+      ellipse 50% 35% at 50% 0%,
+      rgb(255 254 251 / 0.9),
+      transparent 70%
+    ),
+    var(--color-ivory);
+}
+
+.journey__inner {
+  max-width: calc(var(--container-max) + 2 * var(--gutter));
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+/* Intro */
+.journey__header {
+  max-width: 46rem;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.journey__eyebrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin: 0 0 1.25rem;
+  color: var(--color-gold-dark);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+}
+
+.journey__eyebrow::before,
+.journey__eyebrow::after {
+  content: '';
+  flex: 0 0 3.5rem;
+  height: 1px;
+  background: var(--color-gold);
+}
+
+.journey__title {
+  margin: 0;
+  font-size: clamp(2.625rem, 1.2rem + 3.2vw, 4.125rem);
+  font-weight: 500;
+  letter-spacing: -0.015em;
+  line-height: 1.08;
+}
+
+.journey__title-line {
+  display: block;
+}
+
+.journey__title-line--accent {
+  color: var(--color-gold-deep);
+}
+
+.journey__lead {
+  max-width: 40rem;
+  margin: 1.25rem auto 0;
+  text-wrap: balance;
+  color: var(--color-text);
+  font-size: clamp(1rem, 0.9rem + 0.3vw, 1.125rem);
+  line-height: 1.65;
+}
+
+/* Journey */
+.journey__path {
+  container-type: inline-size;
+  position: relative;
+  max-width: 1160px;
+  margin: clamp(3rem, 5vw, 4.5rem) auto 0;
+}
+
+.journey__steps {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0 var(--journey-gap);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.journey__step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.journey__arch {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / var(--journey-arch-ratio);
+  padding: 7px;
+  border: 1px solid rgb(198 164 103 / 0.65);
+  border-radius: 999px 999px 0 0;
+  transition: border-color var(--transition);
+}
+
+.journey__photo {
+  position: relative;
+  display: grid;
+  place-items: center;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 999px 999px 0 0;
+  background: linear-gradient(
+    to bottom,
+    var(--color-paper),
+    color-mix(in srgb, var(--color-cream) 70%, var(--color-ivory))
+  );
+}
+
+.journey__photo img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  max-width: none;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 900ms ease;
+}
+
+.journey__photo img[data-missing] {
+  visibility: hidden;
+}
+
+.journey__placeholder {
+  width: 28%;
+  height: auto;
+  color: var(--color-gold);
+  opacity: 0.45;
+}
+
+.journey__placeholder * {
+  stroke-width: 0.8px;
+  vector-effect: non-scaling-stroke;
+}
+
+.journey__marker {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 13px;
+  height: 13px;
+  border: 1px solid var(--color-gold);
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    var(--color-gold-deep) 0 2px,
+    var(--color-ivory) 2.5px
+  );
+  transform: translate(-50%, 50%);
+}
+
+/* Desktop journey line: shallow garlands hanging between the markers at the
+   foot of each arch. Positions are derived from the grid's column width. */
+.journey__line {
+  --column: calc((100cqw - 3 * var(--journey-gap)) / 4);
+
+  position: absolute;
+  z-index: -1;
+  top: calc(var(--column) * var(--journey-arch-ratio));
+  left: calc(var(--column) / 2);
+  width: calc(100cqw - var(--column));
+  height: 22px;
+  overflow: visible;
+}
+
+.journey__line path {
+  fill: none;
+  stroke: var(--color-gold);
+  stroke-width: 1px;
+  vector-effect: non-scaling-stroke;
+}
+
+.journey__number {
+  margin: 1.9rem 0 0;
+  color: var(--color-gold-deep);
+  font-family: var(--font-display);
+  font-size: 1.0625rem;
+  letter-spacing: 0.08em;
+}
+
+.journey__step-title {
+  margin: 0.3rem 0 0;
+  font-size: clamp(1.375rem, 1.1rem + 0.5vw, 1.625rem);
+  line-height: 1.2;
+}
+
+.journey__text {
+  max-width: 16rem;
+  margin: 0.6rem auto 0;
+  color: var(--color-text);
+  font-size: 0.9375rem;
+  line-height: 1.6;
+}
+
+@media (hover: hover) {
+  .journey__step:hover .journey__photo img {
+    transform: scale(1.03);
+  }
+
+  .journey__step:hover .journey__arch {
+    border-color: var(--color-gold-deep);
+  }
+}
+
+/* Decoration */
+.journey__decor {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.journey__motif {
+  position: absolute;
+  width: clamp(120px, 12vw, 190px);
+  height: auto;
+  color: var(--color-gold);
+  opacity: 0.22;
+}
+
+.journey__motif--left {
+  top: 2.5rem;
+  left: -2rem;
+}
+
+.journey__motif--right {
+  right: -2rem;
+  bottom: 0;
+  transform: scaleX(-1);
+}
+
+/* Tablet: two stages per row, joined by a straight baseline */
+@media (max-width: 1023.98px) {
+  .journey__path {
+    max-width: 600px;
+  }
+
+  .journey__steps {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    row-gap: 3.5rem;
+  }
+
+  .journey__line {
+    display: none;
+  }
+
+  .journey__step:nth-child(odd) .journey__arch::after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    bottom: -1px;
+    left: 50%;
+    width: calc(100% + var(--journey-gap));
+    height: 1px;
+    background: var(--color-gold);
+  }
+
+  .journey__number {
+    margin-top: 1.5rem;
+  }
+}
+
+/* Mobile: one stage per row, joined by a short vertical line */
+@media (max-width: 767.98px) {
+  .journey__eyebrow {
+    gap: 0.6rem;
+    font-size: 0.6875rem;
+    letter-spacing: 0.24em;
+  }
+
+  .journey__eyebrow::before,
+  .journey__eyebrow::after {
+    flex-basis: 1.5rem;
+  }
+
+  .journey__title {
+    font-size: clamp(2.375rem, 1.6rem + 3.4vw, 3rem);
+  }
+
+  .journey__lead {
+    font-size: 1rem;
+  }
+
+  .journey__steps {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 0;
+  }
+
+  .journey__step:nth-child(odd) .journey__arch::after {
+    content: none;
+  }
+
+  .journey__step:not(:last-child)::after {
+    content: '';
+    width: 1px;
+    height: 3.5rem;
+    margin: 2rem auto;
+    background: linear-gradient(
+      to bottom,
+      transparent,
+      var(--color-gold) 30%,
+      var(--color-gold) 70%,
+      transparent
+    );
+  }
+
+  .journey__arch {
+    width: min(100%, 300px);
+  }
+
+  .journey__text {
+    font-size: 1rem;
+  }
+
+  .journey__motif {
+    width: 110px;
+    opacity: 0.16;
+  }
+}

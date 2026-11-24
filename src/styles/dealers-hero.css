@@ -1,0 +1,726 @@
+.dealers-hero {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  grid-template-columns: minmax(0, 52fr) minmax(0, 48fr);
+  grid-template-rows: 1fr auto;
+  align-items: center;
+  min-height: clamp(650px, 48vw, 700px);
+  overflow: hidden;
+  padding-block: clamp(2.75rem, 4vw, 3.5rem);
+  background: var(--color-ivory);
+}
+
+/* Soft dealership atmosphere on the right — abstract shelves + warm light */
+.dealers-hero__atmosphere {
+  position: absolute;
+  z-index: -2;
+  inset: 0 0 0 38%;
+  overflow: hidden;
+  pointer-events: none;
+  background:
+    radial-gradient(
+      ellipse 48% 55% at 78% 18%,
+      rgb(255 244 214 / 0.75),
+      transparent 68%
+    ),
+    radial-gradient(
+      ellipse 60% 70% at 55% 48%,
+      rgb(236 214 172 / 0.45),
+      transparent 70%
+    ),
+    linear-gradient(
+      168deg,
+      #efe0c4 0%,
+      #e2cfa8 28%,
+      #d4bc90 55%,
+      #c4a878 78%,
+      #b39668 100%
+    );
+}
+
+.dealers-hero__shelf {
+  position: absolute;
+  left: 12%;
+  right: -8%;
+  border-radius: 0.2rem;
+  background: linear-gradient(
+    180deg,
+    rgb(255 248 232 / 0.28) 0%,
+    rgb(140 108 62 / 0.14) 42%,
+    rgb(78 55 28 / 0.22) 100%
+  );
+  filter: blur(16px);
+  opacity: 0.5;
+  transform: perspective(520px) rotateX(6deg);
+}
+
+.dealers-hero__shelf--far {
+  top: 6%;
+  height: 14%;
+  opacity: 0.28;
+  filter: blur(22px);
+}
+
+.dealers-hero__shelf--back {
+  top: 22%;
+  height: 16%;
+  opacity: 0.42;
+}
+
+.dealers-hero__shelf--mid {
+  top: 44%;
+  height: 20%;
+  opacity: 0.32;
+  filter: blur(20px);
+}
+
+.dealers-hero__glow {
+  position: absolute;
+  inset: 0 0 28% 18%;
+  background: radial-gradient(
+    ellipse 55% 50% at 72% 22%,
+    rgb(255 246 220 / 0.8),
+    transparent 70%
+  );
+  filter: blur(28px);
+}
+
+/* Organic ivory curve into the product side — not a hard 50/50 split */
+.dealers-hero__veil {
+  position: absolute;
+  z-index: 0;
+  top: -8%;
+  bottom: -8%;
+  left: -4%;
+  width: min(62%, 52rem);
+  background: var(--color-ivory);
+  border-radius: 0 48% 52% 0 / 0 42% 58% 0;
+  box-shadow: 18px 0 48px -28px rgb(74 52 26 / 0.12);
+  pointer-events: none;
+}
+
+.dealers-hero__motif {
+  position: absolute;
+  z-index: 0;
+  width: clamp(5.5rem, 8vw, 7.5rem);
+  height: auto;
+  color: var(--color-gold);
+  opacity: 0.22;
+  pointer-events: none;
+}
+
+.dealers-hero__motif--top {
+  top: 1.5rem;
+  left: -0.75rem;
+  transform: rotate(-12deg);
+}
+
+.dealers-hero__motif--bottom {
+  bottom: 1.25rem;
+  left: 6%;
+  width: clamp(4.5rem, 6.5vw, 6rem);
+  opacity: 0.16;
+  transform: scaleX(-1) rotate(8deg);
+}
+
+.dealers-hero__copy {
+  position: relative;
+  z-index: 1;
+  grid-column: 1;
+  grid-row: 1;
+  max-width: 35.5rem;
+  margin-left: max(
+    var(--gutter),
+    calc((100vw - var(--container-max) - 2 * var(--gutter)) / 2 + var(--gutter))
+  );
+  padding-right: 1rem;
+}
+
+.dealers-hero__eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 0 0 1.4rem;
+  color: var(--color-gold-dark);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+}
+
+.dealers-hero__eyebrow::before,
+.dealers-hero__eyebrow::after {
+  content: '';
+  flex: 0 0 2.5rem;
+  height: 1px;
+  background: var(--color-gold);
+}
+
+.dealers-hero__eyebrow-icon {
+  flex-shrink: 0;
+  width: 1rem;
+  height: 1rem;
+  margin-right: -0.25rem;
+  color: var(--color-gold);
+  transform: rotate(28deg);
+}
+
+.dealers-hero__title {
+  margin: 0;
+  font-size: clamp(2.75rem, 1.1rem + 3.2vw, 4rem);
+  font-weight: 500;
+  letter-spacing: -0.018em;
+  line-height: 1.1;
+}
+
+.dealers-hero__title-line {
+  display: block;
+}
+
+.dealers-hero__title-line--accent {
+  color: var(--color-gold-deep);
+  font-style: italic;
+}
+
+.dealers-hero__lead {
+  max-width: 34rem;
+  margin: 1.25rem 0 0;
+  color: var(--color-text);
+  font-size: clamp(1rem, 0.94rem + 0.22vw, 1.0625rem);
+  line-height: 1.7;
+  text-wrap: pretty;
+}
+
+.dealers-hero__cta {
+  margin-top: 1.75rem;
+}
+
+.dealers-hero__highlights {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-column: 1;
+  grid-row: 2;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  max-width: 34rem;
+  margin: 2.25rem 0 0;
+  margin-left: max(
+    var(--gutter),
+    calc((100vw - var(--container-max) - 2 * var(--gutter)) / 2 + var(--gutter))
+  );
+  padding: 0;
+  list-style: none;
+}
+
+.dealers-hero__highlight {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 0.15rem 0.65rem;
+  text-align: center;
+}
+
+.dealers-hero__highlight + .dealers-hero__highlight {
+  border-left: 1px solid var(--color-border);
+}
+
+.dealers-hero__seal {
+  display: grid;
+  place-items: center;
+  width: 3.75rem;
+  height: 3.75rem;
+  border: 1px solid rgb(176 138 74 / 0.55);
+  border-radius: 50%;
+  background: rgb(255 254 251 / 0.45);
+  color: var(--color-gold-deep);
+}
+
+.dealers-hero__seal svg {
+  width: 1.45rem;
+  height: 1.45rem;
+}
+
+.dealers-hero__highlight-title {
+  color: var(--color-brown);
+  font-family: var(--font-display);
+  font-size: clamp(0.9375rem, 0.85rem + 0.25vw, 1.0625rem);
+  font-weight: 500;
+  line-height: 1.3;
+  text-wrap: balance;
+}
+
+/* ── RHS: editorial product photography stage ── */
+.dealers-hero__stage {
+  position: relative;
+  z-index: 1;
+  grid-column: 2;
+  grid-row: 1 / -1;
+  align-self: center;
+  width: min(100%, 38rem);
+  height: min(100%, 36rem);
+  margin-right: max(
+    0.25rem,
+    calc((100vw - var(--container-max) - 2 * var(--gutter)) / 2 + var(--gutter) - 0.5rem)
+  );
+  margin-left: auto;
+  container-type: size;
+  aspect-ratio: 100 / 105;
+  max-height: 36rem;
+}
+
+/* Continuous wood tabletop — fills lower RHS, fades into atmosphere */
+.dealers-hero__table {
+  position: absolute;
+  z-index: 1;
+  inset: auto -12% -6% -18%;
+  height: 38%;
+  background:
+    linear-gradient(
+      90deg,
+      rgb(251 246 236 / 0.55) 0%,
+      transparent 18%,
+      transparent 82%,
+      rgb(196 168 120 / 0.35) 100%
+    ),
+    linear-gradient(
+      180deg,
+      #f3e6cf 0%,
+      #e8d4b0 12%,
+      #d9bf94 38%,
+      #c9ab7c 72%,
+      #b89768 100%
+    );
+  box-shadow:
+    inset 0 1.2cqh 0 rgb(255 252 244 / 0.55),
+    inset 0 0 0 1px rgb(176 138 74 / 0.12);
+  -webkit-mask-image: linear-gradient(
+    90deg,
+    transparent 0%,
+    #000 12%,
+    #000 88%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    90deg,
+    transparent 0%,
+    #000 12%,
+    #000 88%,
+    transparent 100%
+  );
+  pointer-events: none;
+}
+
+.dealers-hero__table::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 22%;
+  background: linear-gradient(
+    180deg,
+    rgb(255 250 240 / 0.55) 0%,
+    transparent 100%
+  );
+}
+
+/* Soft cream cloth fold under the front pack */
+.dealers-hero__cloth {
+  position: absolute;
+  z-index: 2;
+  top: 72%;
+  left: 2%;
+  width: 42%;
+  height: 14%;
+  border-radius: 40% 55% 35% 50%;
+  background: radial-gradient(
+    ellipse at 40% 35%,
+    rgb(255 252 245 / 0.75),
+    rgb(236 220 190 / 0.35) 55%,
+    transparent 78%
+  );
+  filter: blur(1.5px);
+  pointer-events: none;
+}
+
+.dealers-hero__product {
+  position: absolute;
+}
+
+.dealers-hero__contact {
+  position: absolute;
+  z-index: 0;
+  left: 12%;
+  right: 12%;
+  bottom: -1.5%;
+  height: 6%;
+  border-radius: 50%;
+  background: radial-gradient(
+    ellipse at 50% 50%,
+    rgb(58 38 18 / 0.38),
+    rgb(58 38 18 / 0.12) 48%,
+    transparent 72%
+  );
+  filter: blur(4px);
+  pointer-events: none;
+}
+
+.dealers-hero__product-image {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  max-width: none;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 1.1cqh 1.4cqh rgb(58 38 18 / 0.22));
+}
+
+/* Classic 26kg — dominant center-right hero */
+.dealers-hero__product--classic-26kg {
+  z-index: 3;
+  top: 2%;
+  left: 18%;
+  width: 58%;
+}
+
+.dealers-hero__product--classic-26kg .dealers-hero__contact {
+  left: 18%;
+  right: 16%;
+  bottom: 0.5%;
+  height: 5%;
+}
+
+.dealers-hero__product--classic-26kg .dealers-hero__product-image {
+  clip-path: polygon(14.7% 7.8%, 16.5% 7.3%, 35.6% 8.1%, 51.3% 8.3%, 68.4% 8.1%, 85.9% 7.6%, 87.5% 8.9%, 86% 11.2%, 82.9% 15.9%, 80.3% 24.4%, 78.3% 34.2%, 77.8% 46.4%, 77.8% 58.6%, 78.1% 70.8%, 79.1% 80.6%, 80.9% 86.7%, 83.8% 89.9%, 85.5% 91.6%, 71.2% 92.8%, 50.6% 93.3%, 31.3% 93%, 16% 92.6%, 14.8% 91.3%, 18.5% 88.5%, 21.1% 83%, 22.4% 73.3%, 23.1% 61.1%, 23.2% 48.8%, 22.9% 36.6%, 22.4% 26.9%, 21.2% 18.3%, 19.1% 12.8%, 16% 10.4%);
+}
+
+/* XXXL 26kg — right, slightly behind, ~88% of Classic height */
+.dealers-hero__product--xxxl-26kg {
+  z-index: 2;
+  top: 8%;
+  left: 48%;
+  width: 50%;
+}
+
+.dealers-hero__product--xxxl-26kg .dealers-hero__contact {
+  left: 16%;
+  right: 14%;
+  bottom: 1%;
+}
+
+.dealers-hero__product--xxxl-26kg .dealers-hero__product-image {
+  clip-path: polygon(10.2% 9.8%, 11.6% 5.4%, 36.4% 5.4%, 50.9% 5.6%, 68.4% 5.3%, 89.1% 4.6%, 91.3% 5.9%, 91.4% 9.8%, 88.2% 11.2%, 86.2% 15.9%, 84.7% 24.4%, 83.8% 35%, 83.7% 46.4%, 83.7% 58.6%, 84.1% 68.4%, 85% 78.1%, 86.2% 85.5%, 87.9% 90.6%, 90.2% 93.5%, 72.8% 94.7%, 50.9% 95.2%, 29.1% 95%, 14.6% 94.3%, 15.1% 92.8%, 16.3% 87.9%, 17% 81.8%, 17.9% 73.3%, 18.3% 61.1%, 18.5% 48.8%, 18.3% 36.6%, 17.8% 26.9%, 16.4% 18.3%, 14.6% 13.4%, 13.1% 11.2%);
+}
+
+/* Classic 1kg — front-left, smaller, overlapping Classic base */
+.dealers-hero__product--classic-1kg {
+  z-index: 5;
+  top: 38%;
+  left: 0%;
+  width: 30%;
+}
+
+.dealers-hero__product--classic-1kg .dealers-hero__contact {
+  left: 10%;
+  right: 10%;
+  bottom: -0.5%;
+  height: 7%;
+  background: radial-gradient(
+    ellipse at 50% 50%,
+    rgb(58 38 18 / 0.42),
+    rgb(58 38 18 / 0.14) 50%,
+    transparent 74%
+  );
+}
+
+.dealers-hero__product--classic-1kg .dealers-hero__product-image {
+  clip-path: polygon(5.9% 2.4%, 48.9% 2.2%, 92.8% 2.4%, 92.2% 7.1%, 89.3% 11%, 86.8% 19.5%, 85% 30.5%, 83.7% 42.7%, 83.1% 54.9%, 83.1% 67.2%, 83.7% 78.1%, 85.3% 87.9%, 88.3% 94%, 90.9% 95%, 91.2% 98.3%, 48.9% 98.7%, 6.2% 98.4%, 6.5% 95%, 10.4% 93%, 14% 85.5%, 15.1% 75.7%, 15.8% 63.5%, 15.6% 51.3%, 15% 39.1%, 14% 26.9%, 12.4% 17.1%, 10.1% 10%, 7.2% 7.1%);
+}
+
+.dealers-hero__bowl {
+  position: absolute;
+  z-index: 4;
+  top: 64%;
+  left: 58%;
+  width: 34%;
+  max-width: none;
+  height: auto;
+  mix-blend-mode: multiply;
+  -webkit-mask-image: radial-gradient(
+    ellipse 52% 52% at 50% 52%,
+    #000 48%,
+    transparent 78%
+  );
+  mask-image: radial-gradient(
+    ellipse 52% 52% at 50% 52%,
+    #000 48%,
+    transparent 78%
+  );
+  pointer-events: none;
+  opacity: 0.92;
+}
+
+.dealers-hero__grains {
+  position: absolute;
+  z-index: 6;
+  top: 74%;
+  left: 18%;
+  width: 42%;
+  height: auto;
+  fill: #fffdf6;
+  stroke: rgb(176 138 74 / 0.4);
+  stroke-width: 0.35;
+  pointer-events: none;
+}
+
+.dealers-hero__stage-sprig {
+  position: absolute;
+  height: auto;
+  color: var(--color-gold);
+  pointer-events: none;
+}
+
+.dealers-hero__stage-sprig--back {
+  z-index: 1;
+  top: 18%;
+  right: -2%;
+  width: 18%;
+  opacity: 0.28;
+  transform: scaleX(-1) rotate(-8deg);
+}
+
+.dealers-hero__stage-sprig--front {
+  z-index: 4;
+  top: 58%;
+  right: 2%;
+  width: 15%;
+  opacity: 0.4;
+  transform: rotate(16deg);
+}
+
+@media (max-width: 1199.98px) {
+  .dealers-hero {
+    grid-template-columns: minmax(0, 50fr) minmax(0, 50fr);
+  }
+
+  .dealers-hero__veil {
+    width: min(58%, 44rem);
+  }
+
+  .dealers-hero__title {
+    font-size: clamp(2.5rem, 1rem + 2.8vw, 3.25rem);
+  }
+
+  .dealers-hero__seal {
+    width: 3.25rem;
+    height: 3.25rem;
+  }
+
+  .dealers-hero__highlight {
+    padding-inline: 0.4rem;
+  }
+
+  .dealers-hero__stage {
+    width: min(100%, 34rem);
+    height: min(100%, 32rem);
+    max-height: 32rem;
+  }
+
+  .dealers-hero__product--classic-26kg {
+    width: 56%;
+  }
+
+  .dealers-hero__product--xxxl-26kg {
+    width: 48%;
+  }
+
+  .dealers-hero__bowl {
+    opacity: 0.8;
+  }
+}
+
+@media (max-width: 1023.98px) {
+  .dealers-hero {
+    min-height: 0;
+    padding-block: 3rem 3.25rem;
+  }
+
+  .dealers-hero__atmosphere {
+    inset: 0 0 0 42%;
+  }
+
+  .dealers-hero__veil {
+    width: min(56%, 36rem);
+    border-radius: 0 42% 48% 0 / 0 38% 52% 0;
+  }
+
+  .dealers-hero__stage {
+    width: min(100%, 30rem);
+    height: auto;
+    max-height: none;
+  }
+
+  .dealers-hero__highlight-title {
+    font-size: 0.875rem;
+  }
+
+  .dealers-hero__shelf--far,
+  .dealers-hero__stage-sprig--back {
+    display: none;
+  }
+
+  .dealers-hero__bowl {
+    width: 30%;
+    opacity: 0.75;
+  }
+}
+
+/* Mobile: copy → CTA → products → highlights */
+@media (max-width: 767.98px) {
+  .dealers-hero {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    min-height: 0;
+    padding-block: 3rem 2.75rem;
+  }
+
+  .dealers-hero__atmosphere {
+    inset: auto 0 0 0;
+    height: 52%;
+    opacity: 0.7;
+  }
+
+  .dealers-hero__veil {
+    display: none;
+  }
+
+  .dealers-hero__motif--bottom {
+    display: none;
+  }
+
+  .dealers-hero__motif--top {
+    opacity: 0.14;
+  }
+
+  .dealers-hero__copy {
+    order: 1;
+    max-width: none;
+    margin-inline: var(--gutter);
+    padding-right: 0;
+  }
+
+  .dealers-hero__eyebrow {
+    gap: 0.55rem;
+    margin-bottom: 1.15rem;
+    font-size: 0.75rem;
+    letter-spacing: 0.26em;
+  }
+
+  .dealers-hero__eyebrow::before,
+  .dealers-hero__eyebrow::after {
+    flex-basis: 1.75rem;
+  }
+
+  .dealers-hero__title {
+    font-size: clamp(2.5rem, 1.7rem + 2.8vw, 2.75rem);
+  }
+
+  .dealers-hero__lead {
+    font-size: 1rem;
+  }
+
+  .dealers-hero__cta {
+    width: 100%;
+    max-width: 22rem;
+  }
+
+  .dealers-hero__stage {
+    order: 2;
+    width: min(100%, 24rem);
+    height: auto;
+    margin: 1.75rem auto 0;
+    aspect-ratio: 100 / 102;
+  }
+
+  .dealers-hero__shelf,
+  .dealers-hero__glow,
+  .dealers-hero__stage-sprig--back,
+  .dealers-hero__cloth {
+    display: none;
+  }
+
+  .dealers-hero__table {
+    inset: auto -8% -4% -8%;
+    height: 34%;
+    -webkit-mask-image: linear-gradient(
+      180deg,
+      transparent 0%,
+      #000 28%,
+      #000 100%
+    );
+    mask-image: linear-gradient(
+      180deg,
+      transparent 0%,
+      #000 28%,
+      #000 100%
+    );
+  }
+
+  .dealers-hero__bowl {
+    width: 28%;
+    top: 66%;
+    left: 62%;
+    opacity: 0.7;
+  }
+
+  .dealers-hero__grains {
+    top: 76%;
+    left: 16%;
+    width: 46%;
+  }
+
+  .dealers-hero__stage-sprig--front {
+    width: 12%;
+    opacity: 0.32;
+  }
+
+  .dealers-hero__highlights {
+    order: 3;
+    grid-column: auto;
+    grid-row: auto;
+    max-width: none;
+    margin: 2rem var(--gutter) 0;
+  }
+
+  .dealers-hero__highlight {
+    padding: 0.35rem 0.35rem;
+  }
+
+  .dealers-hero__seal {
+    width: 3.25rem;
+    height: 3.25rem;
+  }
+}
+
+@media (max-width: 479.98px) {
+  .dealers-hero__highlights {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 0;
+  }
+
+  .dealers-hero__highlight + .dealers-hero__highlight {
+    border-left: 0;
+    border-top: 1px solid var(--color-border);
+    padding-block: 1.1rem;
+  }
+
+  .dealers-hero__highlight:first-child {
+    padding-bottom: 1.1rem;
+  }
+
+  .dealers-hero__bowl {
+    display: none;
+  }
+}

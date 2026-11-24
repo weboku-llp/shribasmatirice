@@ -1,0 +1,226 @@
+.family-story {
+  --fs-content: 43%;
+  --fs-media-start: 40%;
+
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  min-height: clamp(560px, 45vw, 660px);
+  overflow: hidden;
+  background:
+    radial-gradient(
+      ellipse 30% 60% at 38% 45%,
+      rgb(255 254 251 / 0.85),
+      transparent 70%
+    ),
+    var(--color-ivory);
+}
+
+/* Photograph: fills the right side; only its left edge fades into the cream
+   section background. The cream fill shows while it loads. */
+.family-story__media {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: var(--fs-media-start);
+  overflow: hidden;
+  background: var(--color-cream);
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0,
+    rgb(0 0 0 / 0.45) 6%,
+    rgb(0 0 0 / 0.85) 12%,
+    #000 18%
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent 0,
+    rgb(0 0 0 / 0.45) 6%,
+    rgb(0 0 0 / 0.85) 12%,
+    #000 18%
+  );
+}
+
+.family-story__image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  max-width: none;
+  height: 100%;
+  object-fit: cover;
+  /* The photo is 2:1, so cover crops its sides; this keeps the girl on the
+     left through the boy on the right, with the rice at the centre. */
+  object-position: 75% 50%;
+  transition: transform 1.2s ease;
+}
+
+@media (hover: hover) {
+  .family-story__media:hover .family-story__image {
+    transform: scale(1.015);
+  }
+}
+
+/* Content */
+.family-story__content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  width: var(--fs-content);
+  padding: clamp(4rem, 6vw, 5.5rem) clamp(1.5rem, 2.5vw, 2.5rem)
+    clamp(4rem, 6vw, 5.5rem)
+    max(var(--gutter), calc((100% - var(--container-max)) / 2 + 3rem));
+}
+
+.family-story__motif {
+  position: absolute;
+  z-index: -1;
+  bottom: 0;
+  left: -1.5rem;
+  width: clamp(110px, 11.5vw, 170px);
+  height: auto;
+  color: var(--color-gold);
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+.family-story__eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  margin: 0 0 1.5rem;
+  color: var(--color-gold-dark);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+}
+
+.family-story__eyebrow::before,
+.family-story__eyebrow::after {
+  content: '';
+  flex: 0 0 2.75rem;
+  height: 1px;
+  background: var(--color-gold);
+}
+
+.family-story__title {
+  margin: 0;
+  font-size: clamp(2.25rem, 0.9rem + 2.6vw, 3.375rem);
+  font-weight: 500;
+  letter-spacing: -0.015em;
+  line-height: 1.1;
+}
+
+.family-story__title-line {
+  display: block;
+}
+
+.family-story__title-accent {
+  color: var(--color-gold-deep);
+}
+
+.family-story__lead {
+  max-width: 23rem;
+  margin: 1.5rem 0 0;
+  color: var(--color-text);
+  font-size: clamp(1rem, 0.94rem + 0.2vw, 1.0625rem);
+  line-height: 1.7;
+}
+
+.button.family-story__cta {
+  margin-top: 2.25rem;
+}
+
+/* Tablet: keep the split, give the text a little more room */
+@media (max-width: 1023.98px) {
+  .family-story {
+    --fs-content: 50%;
+    --fs-media-start: 49%;
+
+    min-height: 520px;
+  }
+
+  .family-story__eyebrow {
+    gap: 0.7rem;
+    font-size: 0.75rem;
+    letter-spacing: 0.26em;
+  }
+
+  .family-story__eyebrow::before,
+  .family-story__eyebrow::after {
+    flex-basis: 2rem;
+  }
+
+  .family-story__lead {
+    font-size: 0.9375rem;
+  }
+}
+
+/* Mobile: text first, then a landscape photograph that fades in from above */
+@media (max-width: 767.98px) {
+  .family-story {
+    flex-direction: column;
+    min-height: 0;
+  }
+
+  .family-story__content {
+    width: 100%;
+    padding: 3.75rem var(--gutter) 2.5rem;
+  }
+
+  .family-story__motif {
+    right: 0;
+    left: auto;
+    width: 96px;
+    opacity: 0.3;
+    transform: scaleX(-1);
+  }
+
+  .family-story__eyebrow {
+    gap: 0.6rem;
+    margin-bottom: 1.25rem;
+    font-size: 0.6875rem;
+    letter-spacing: 0.24em;
+  }
+
+  .family-story__eyebrow::before,
+  .family-story__eyebrow::after {
+    flex-basis: 1.5rem;
+  }
+
+  .family-story__title {
+    font-size: clamp(2.375rem, 1.6rem + 3.4vw, 3rem);
+  }
+
+  .family-story__lead {
+    font-size: 1rem;
+  }
+
+  .button.family-story__cta {
+    margin-top: 2rem;
+  }
+
+  .family-story__media {
+    position: relative;
+    z-index: 0;
+    left: auto;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    -webkit-mask-image: linear-gradient(
+      to bottom,
+      transparent 0,
+      rgb(0 0 0 / 0.7) 6%,
+      #000 12%
+    );
+    mask-image: linear-gradient(
+      to bottom,
+      transparent 0,
+      rgb(0 0 0 / 0.7) 6%,
+      #000 12%
+    );
+  }
+}

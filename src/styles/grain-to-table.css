@@ -1,0 +1,364 @@
+.grain-table {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding-block: clamp(3.5rem, 5.5vw, 5rem) clamp(4.5rem, 7vw, 6.5rem);
+  background:
+    radial-gradient(
+      ellipse 45% 55% at 20% 45%,
+      rgb(255 254 251 / 0.85),
+      transparent 70%
+    ),
+    var(--color-ivory);
+}
+
+.grain-table__inner {
+  display: grid;
+  grid-template-columns: minmax(0, 46fr) minmax(0, 54fr);
+  align-items: center;
+  column-gap: clamp(2rem, 4.5vw, 4.5rem);
+  max-width: calc(var(--container-max) + 2 * var(--gutter));
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+/* Copy */
+.grain-table__content {
+  container-type: inline-size;
+}
+
+.grain-table__eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 0 0 1.35rem;
+  color: var(--color-gold-dark);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+}
+
+.grain-table__eyebrow::before,
+.grain-table__eyebrow::after {
+  content: '';
+  flex: 0 0 2.5rem;
+  height: 1px;
+  background: var(--color-gold);
+}
+
+.grain-table__eyebrow-icon {
+  flex-shrink: 0;
+  width: 1rem;
+  height: 1rem;
+  margin-right: -0.25rem;
+  color: var(--color-gold);
+  transform: rotate(28deg);
+}
+
+.grain-table__title {
+  margin: 0;
+  font-size: clamp(2.25rem, 7.3cqi, 3.25rem);
+  font-weight: 500;
+  letter-spacing: -0.015em;
+  line-height: 1.15;
+}
+
+.grain-table__title-line {
+  display: block;
+  text-wrap: balance;
+}
+
+.grain-table__title-line--accent {
+  color: var(--color-gold-deep);
+  font-style: italic;
+}
+
+.grain-table__lead {
+  max-width: 34rem;
+  margin: 1.35rem 0 0;
+  color: var(--color-text);
+  font-size: clamp(1rem, 0.92rem + 0.3vw, 1.125rem);
+  line-height: 1.75;
+  text-wrap: pretty;
+}
+
+/* Steps: four centred columns divided by hairlines */
+.grain-table__steps {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  max-width: 36rem;
+  margin: 2.5rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.grain-table__step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.25rem 0.5rem;
+  text-align: center;
+}
+
+.grain-table__step + .grain-table__step {
+  border-left: 1px solid var(--color-border);
+}
+
+.grain-table__seal {
+  display: grid;
+  place-items: center;
+  width: 3.875rem;
+  height: 3.875rem;
+  margin-bottom: 1rem;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at 50% 40%,
+    rgb(243 231 207 / 0.75),
+    rgb(198 164 103 / 0.24)
+  );
+  color: var(--color-gold-deep);
+}
+
+.grain-table__seal svg {
+  width: 1.625rem;
+  height: 1.625rem;
+}
+
+.grain-table__step-title {
+  margin: 0;
+  color: var(--color-brown);
+  font-family: var(--font-body);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+
+.grain-table__step-title span,
+.grain-table__step-text span {
+  display: block;
+}
+
+.grain-table__step-text {
+  margin: 0.5rem 0 0;
+  color: var(--color-muted);
+  font-size: 0.8125rem;
+  line-height: 1.5;
+}
+
+/* Visual: four arches stepping down from left to right, a rice bowl in
+   front of their bases. Sized in container-width units so the stagger
+   keeps its proportions at every size. */
+.grain-table__visual {
+  position: relative;
+  aspect-ratio: 100 / 74;
+  container-type: inline-size;
+}
+
+.grain-table__arch {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 24.4cqw;
+  height: 54cqw;
+  overflow: hidden;
+  border: 3px solid var(--color-paper);
+  border-radius: 12cqw 12cqw 1cqw 1cqw;
+  background: linear-gradient(
+    180deg,
+    rgb(243 231 207 / 0.9),
+    rgb(198 164 103 / 0.35)
+  );
+  box-shadow: 0 22px 40px -32px rgb(74 52 26 / 0.55);
+}
+
+.grain-table__arch:nth-of-type(2) {
+  top: 7cqw;
+  left: 25.2cqw;
+  height: 47cqw;
+}
+
+.grain-table__arch:nth-of-type(3) {
+  top: 11.5cqw;
+  left: 50.4cqw;
+  height: 52cqw;
+}
+
+.grain-table__arch:nth-of-type(4) {
+  top: 15cqw;
+  left: 75.6cqw;
+  height: 49cqw;
+}
+
+.grain-table__image {
+  width: 100%;
+  max-width: none;
+  height: 100%;
+  object-fit: cover;
+}
+
+.grain-table__image[data-missing] {
+  visibility: hidden;
+}
+
+.grain-table__bowl {
+  position: absolute;
+  bottom: -8cqw;
+  left: 12cqw;
+  width: 66cqw;
+  max-width: none;
+  height: auto;
+  mask-image: radial-gradient(ellipse 50% 50% at 50% 52%, #000 58%, transparent);
+  pointer-events: none;
+}
+
+.grain-table__bowl[data-missing] {
+  display: none;
+}
+
+/* Decoration */
+.grain-table__motif {
+  position: absolute;
+  z-index: -1;
+  top: -10cqw;
+  right: -6cqw;
+  width: 24cqw;
+  height: auto;
+  color: var(--color-gold);
+  opacity: 0.3;
+  transform: scaleX(-1) rotate(-12deg);
+  pointer-events: none;
+}
+
+.grain-table__edge-motif {
+  position: absolute;
+  z-index: -1;
+  top: 18%;
+  left: -2.5rem;
+  width: clamp(5rem, 8vw, 8rem);
+  height: auto;
+  color: var(--color-gold);
+  opacity: 0.2;
+  transform: rotate(-14deg);
+  pointer-events: none;
+}
+
+.grain-table__countryside {
+  position: absolute;
+  z-index: -1;
+  bottom: 0;
+  left: 0;
+  width: min(52%, 820px);
+  height: auto;
+  color: var(--color-gold);
+  opacity: 0.16;
+  pointer-events: none;
+}
+
+/* Compact desktop: tighter step columns */
+@media (max-width: 1199.98px) {
+  .grain-table__inner {
+    grid-template-columns: minmax(0, 47fr) minmax(0, 53fr);
+  }
+
+  .grain-table__step {
+    padding-inline: 0.3rem;
+  }
+
+  .grain-table__step-title {
+    letter-spacing: 0.1em;
+  }
+
+  .grain-table__seal {
+    width: 3.375rem;
+    height: 3.375rem;
+  }
+
+  .grain-table__seal svg {
+    width: 1.4rem;
+    height: 1.4rem;
+  }
+}
+
+/* Tablet and below: copy first, then the arches */
+@media (max-width: 1023.98px) {
+  .grain-table__inner {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 3.5rem;
+  }
+
+  .grain-table__content {
+    max-width: 40rem;
+  }
+
+  .grain-table__visual {
+    width: min(100%, 40rem);
+    margin-inline: auto;
+  }
+
+  .grain-table__step-title {
+    letter-spacing: 0.14em;
+  }
+
+  .grain-table__countryside {
+    width: 100%;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .grain-table__eyebrow {
+    gap: 0.6rem;
+    margin-bottom: 1.15rem;
+    font-size: 0.75rem;
+    letter-spacing: 0.26em;
+  }
+
+  .grain-table__eyebrow::before,
+  .grain-table__eyebrow::after {
+    flex-basis: 1.75rem;
+  }
+
+  .grain-table__lead {
+    font-size: 1rem;
+  }
+
+  .grain-table__edge-motif {
+    display: none;
+  }
+}
+
+/* Phones: steps in a 2 × 2 grid */
+@media (max-width: 599.98px) {
+  .grain-table__steps {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    margin-top: 2rem;
+  }
+
+  .grain-table__step {
+    padding: 1.25rem 0.5rem;
+  }
+
+  .grain-table__step + .grain-table__step {
+    border-left: 0;
+  }
+
+  .grain-table__step:nth-child(even) {
+    border-left: 1px solid var(--color-border);
+  }
+
+  .grain-table__step:nth-child(n + 3) {
+    border-top: 1px solid var(--color-border);
+  }
+
+  .grain-table__arch {
+    border-width: 2px;
+  }
+}
+
+@media (max-width: 379.98px) {
+  .grain-table__title {
+    font-size: 2rem;
+  }
+}

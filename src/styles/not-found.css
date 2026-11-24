@@ -1,0 +1,37 @@
+.not-found {
+  display: grid;
+  justify-items: start;
+  gap: 1rem;
+  max-width: calc(var(--container-max) + 2 * var(--gutter));
+  margin: 0 auto;
+  padding: clamp(4rem, 8vw, 6.5rem) var(--gutter) clamp(5rem, 10vw, 7.5rem);
+}
+
+.not-found__eyebrow {
+  margin: 0;
+  color: var(--color-gold);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+}
+
+.not-found__title {
+  margin: 0;
+  font-size: clamp(2.25rem, 1.4rem + 2.5vw, 3.25rem);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+.not-found__lead {
+  max-width: 34rem;
+  margin: 0;
+  color: var(--color-text);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+}
+
+.not-found__cta {
+  margin-top: 0.75rem;
+}

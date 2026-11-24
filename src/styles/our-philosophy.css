@@ -1,0 +1,430 @@
+.philosophy {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding-block: clamp(4rem, 6.5vw, 6rem) clamp(5rem, 8.5vw, 7.75rem);
+  background:
+    radial-gradient(
+      ellipse 40% 60% at 22% 50%,
+      rgb(255 254 251 / 0.85),
+      transparent 70%
+    ),
+    var(--color-ivory);
+}
+
+.philosophy__inner {
+  display: grid;
+  grid-template-columns: minmax(0, 52fr) minmax(0, 48fr);
+  align-items: center;
+  column-gap: clamp(3rem, 6vw, 6rem);
+  max-width: calc(var(--container-max) + 2 * var(--gutter));
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+/* Copy */
+.philosophy__content {
+  container-type: inline-size;
+}
+
+.philosophy__eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 0 0 1.5rem;
+  color: var(--color-gold-dark);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+}
+
+.philosophy__eyebrow::before,
+.philosophy__eyebrow::after {
+  content: '';
+  flex: 0 0 2.5rem;
+  height: 1px;
+  background: var(--color-gold);
+}
+
+.philosophy__eyebrow-icon {
+  flex-shrink: 0;
+  width: 1rem;
+  height: 1rem;
+  margin-right: -0.25rem;
+  color: var(--color-gold);
+  transform: rotate(28deg);
+}
+
+.philosophy__title {
+  margin: 0;
+  font-size: clamp(2.4375rem, 9cqi, 3.625rem);
+  font-weight: 500;
+  letter-spacing: -0.015em;
+  line-height: 1.12;
+}
+
+.philosophy__title-line {
+  display: block;
+  text-wrap: balance;
+}
+
+.philosophy__title-line--accent {
+  color: var(--color-gold-deep);
+  font-style: italic;
+}
+
+.philosophy__lead {
+  max-width: 36rem;
+  margin: 1.5rem 0 0;
+  color: var(--color-text);
+  font-size: clamp(1rem, 0.92rem + 0.3vw, 1.125rem);
+  line-height: 1.75;
+  text-wrap: pretty;
+}
+
+/* Principles: a 2 × 2 arrangement, divided by a single hairline */
+.philosophy__principles {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2.25rem 0;
+  max-width: 38rem;
+  margin: 2.75rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.philosophy__principle {
+  display: flex;
+  align-items: center;
+  gap: 1.1rem;
+  padding-right: 1.5rem;
+}
+
+.philosophy__principle:nth-child(even) {
+  padding-right: 0;
+  padding-left: clamp(1.5rem, 2.5vw, 2.25rem);
+  border-left: 1px solid var(--color-border);
+}
+
+.philosophy__seal {
+  display: grid;
+  flex-shrink: 0;
+  place-items: center;
+  width: 4.25rem;
+  height: 4.25rem;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at 50% 40%,
+    rgb(243 231 207 / 0.75),
+    rgb(198 164 103 / 0.24)
+  );
+  color: var(--color-gold-deep);
+}
+
+.philosophy__seal svg {
+  width: 1.75rem;
+  height: 1.75rem;
+}
+
+.philosophy__principle-title {
+  margin: 0;
+  color: var(--color-brown);
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  line-height: 1.45;
+  text-transform: uppercase;
+}
+
+.philosophy__principle-title span,
+.philosophy__principle-text span {
+  display: block;
+}
+
+.philosophy__principle-text {
+  margin: 0.45rem 0 0;
+  color: var(--color-muted);
+  font-size: 0.875rem;
+  line-height: 1.55;
+}
+
+/* Visual: arch photograph, an abstract arch behind it and the quote panel.
+   Positioned in container-width units so the overlaps keep their
+   proportions at every size. */
+.philosophy__visual {
+  position: relative;
+  aspect-ratio: 100 / 104;
+  container-type: inline-size;
+}
+
+.philosophy__backdrop-arch {
+  position: absolute;
+  top: 22cqw;
+  left: 0;
+  width: 28cqw;
+  height: 70cqw;
+  border-radius: 14cqw 14cqw 2cqw 2cqw;
+  background: linear-gradient(
+    180deg,
+    rgb(214 178 108 / 0.3),
+    rgb(214 178 108 / 0.08)
+  );
+}
+
+.philosophy__arch-outline {
+  position: absolute;
+  top: -2.5cqw;
+  left: 3.5cqw;
+  width: 77cqw;
+  height: 101cqw;
+  border: 1px solid rgb(198 164 103 / 0.5);
+  border-radius: 38.5cqw 38.5cqw 3.5cqw 3.5cqw;
+}
+
+.philosophy__arch {
+  position: absolute;
+  top: 0;
+  left: 6cqw;
+  width: 72cqw;
+  height: 98cqw;
+  overflow: hidden;
+  border: 5px solid var(--color-paper);
+  border-radius: 36cqw 36cqw 2.5cqw 2.5cqw;
+  background: var(--color-cream);
+  box-shadow: 0 30px 60px -44px rgb(74 52 26 / 0.55);
+}
+
+.philosophy__image {
+  width: 100%;
+  max-width: none;
+  height: 100%;
+  object-fit: cover;
+  object-position: 86% 50%;
+}
+
+.philosophy__quote-panel {
+  position: absolute;
+  top: 16cqw;
+  right: 2cqw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1.1rem;
+  width: 34cqw;
+  height: 74cqw;
+  padding: 1.5rem clamp(1rem, 4.5cqw, 1.75rem);
+  border-radius: 1.5cqw 16cqw 1.5cqw 1.5cqw;
+  background: linear-gradient(170deg, #9b7638 0%, #84612c 100%);
+  box-shadow: 0 24px 44px -30px rgb(74 52 26 / 0.6);
+  color: var(--color-ivory);
+}
+
+.philosophy__quote-icon {
+  width: 1.375rem;
+  height: 1.375rem;
+  color: rgb(251 246 236 / 0.9);
+}
+
+.philosophy__quote-rule {
+  display: block;
+  width: 2.75rem;
+  height: 1px;
+  background: rgb(251 246 236 / 0.55);
+}
+
+.philosophy__quote {
+  margin: 0.4rem 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.125rem, 4.3cqw, 1.625rem);
+  font-style: italic;
+  line-height: 1.45;
+}
+
+.philosophy__quote span {
+  display: block;
+}
+
+/* Decoration */
+.philosophy__motif {
+  position: absolute;
+  height: auto;
+  color: var(--color-gold);
+  opacity: 0.26;
+  pointer-events: none;
+}
+
+.philosophy__motif--left {
+  top: -6cqw;
+  left: -8cqw;
+  width: 24cqw;
+  transform: rotate(-18deg);
+}
+
+.philosophy__motif--top {
+  top: -9cqw;
+  right: -6cqw;
+  width: 22cqw;
+  transform: scaleX(-1) rotate(-10deg);
+}
+
+.philosophy__motif--bottom {
+  right: -4cqw;
+  bottom: -10cqw;
+  width: 26cqw;
+  opacity: 0.22;
+  transform: scaleX(-1);
+}
+
+.philosophy__countryside {
+  position: absolute;
+  z-index: -1;
+  bottom: 0;
+  left: 0;
+  width: min(58%, 900px);
+  height: auto;
+  color: var(--color-gold);
+  opacity: 0.16;
+  pointer-events: none;
+}
+
+/* Compact desktop: slightly smaller principle seals */
+@media (max-width: 1199.98px) {
+  .philosophy__seal {
+    width: 3.75rem;
+    height: 3.75rem;
+  }
+
+  .philosophy__seal svg {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
+  .philosophy__principle {
+    gap: 0.9rem;
+    padding-right: 1rem;
+  }
+}
+
+/* Narrow two-column desktop: seal above the text so descriptions keep two lines */
+@media (min-width: 1024px) and (max-width: 1199.98px) {
+  .philosophy__principle {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+/* Tablet and below: copy first, then the arch composition */
+@media (max-width: 1023.98px) {
+  .philosophy__inner {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 4.5rem;
+  }
+
+  .philosophy__content {
+    max-width: 40rem;
+  }
+
+  .philosophy__visual {
+    width: min(100%, 34rem);
+    margin-inline: auto;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .philosophy__eyebrow {
+    gap: 0.6rem;
+    margin-bottom: 1.25rem;
+    font-size: 0.75rem;
+    letter-spacing: 0.26em;
+  }
+
+  .philosophy__eyebrow::before,
+  .philosophy__eyebrow::after {
+    flex-basis: 1.75rem;
+  }
+
+  .philosophy__lead {
+    font-size: 1rem;
+  }
+
+  .philosophy__principles {
+    margin-top: 2.25rem;
+  }
+
+  /* The arch takes most of the width; the panel tucks in at the lower right */
+  .philosophy__visual {
+    aspect-ratio: 100 / 136;
+  }
+
+  .philosophy__backdrop-arch {
+    top: 30cqw;
+    width: 30cqw;
+    height: 80cqw;
+  }
+
+  .philosophy__arch-outline {
+    top: -2.5cqw;
+    left: 1.5cqw;
+    width: 85cqw;
+    height: 134cqw;
+    border-radius: 42.5cqw 42.5cqw 4cqw 4cqw;
+  }
+
+  .philosophy__arch {
+    left: 4cqw;
+    width: 80cqw;
+    height: 130cqw;
+    border-radius: 40cqw 40cqw 3cqw 3cqw;
+  }
+
+  .philosophy__quote-panel {
+    top: auto;
+    right: 0;
+    bottom: 10cqw;
+    width: 38cqw;
+    height: auto;
+    min-height: 74cqw;
+    gap: 0.8rem;
+    padding: 1.25rem 0.875rem;
+    border-radius: 2cqw 14cqw 2cqw 2cqw;
+  }
+
+  .philosophy__quote {
+    font-size: 1.125rem;
+  }
+
+  .philosophy__motif--left {
+    top: -4cqw;
+    left: -10cqw;
+  }
+
+  .philosophy__countryside {
+    width: 100%;
+  }
+}
+
+/* Narrow phones: one principle per row */
+@media (max-width: 599.98px) {
+  .philosophy__principles {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
+  }
+
+  .philosophy__principle,
+  .philosophy__principle:nth-child(even) {
+    padding: 1rem 0;
+    border-left: 0;
+  }
+
+  .philosophy__principle + .philosophy__principle {
+    border-top: 1px solid var(--color-border);
+  }
+}
+
+@media (max-width: 379.98px) {
+  .philosophy__title {
+    font-size: 2.25rem;
+  }
+}

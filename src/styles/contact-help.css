@@ -1,0 +1,464 @@
+.contact-help {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding-block: clamp(3.75rem, 6vw, 5.25rem) clamp(5.5rem, 9vw, 7.5rem);
+  background: var(--color-ivory);
+  border-top: 1px solid rgb(176 138 74 / 0.12);
+}
+
+.contact-help__motif {
+  position: absolute;
+  z-index: 0;
+  top: 1.5rem;
+  width: clamp(5rem, 7vw, 6.5rem);
+  height: auto;
+  color: var(--color-gold);
+  opacity: 0.16;
+  pointer-events: none;
+}
+
+.contact-help__motif--left {
+  left: -0.5rem;
+  transform: rotate(-12deg);
+}
+
+.contact-help__motif--right {
+  right: -0.75rem;
+  transform: scaleX(-1) rotate(-8deg);
+}
+
+.contact-help__grains {
+  position: absolute;
+  z-index: 0;
+  top: 18%;
+  left: 8%;
+  width: 6rem;
+  height: 3rem;
+  pointer-events: none;
+}
+
+.contact-help__grain {
+  position: absolute;
+  width: 0.9rem;
+  height: 0.9rem;
+  color: var(--color-gold);
+  opacity: 0.18;
+}
+
+.contact-help__grain--1 {
+  top: 0;
+  left: 0;
+  transform: rotate(-30deg);
+}
+
+.contact-help__grain--2 {
+  top: 1.1rem;
+  left: 2rem;
+  transform: rotate(22deg);
+}
+
+.contact-help__grain--3 {
+  top: 0.35rem;
+  left: 4rem;
+  transform: rotate(48deg);
+}
+
+/* Soft field landscape — CSS/SVG only */
+.contact-help__landscape {
+  position: absolute;
+  z-index: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: clamp(7.5rem, 18vw, 11rem);
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgb(236 220 188 / 0.35) 45%,
+    rgb(220 196 150 / 0.45) 100%
+  );
+  -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 38%);
+  mask-image: linear-gradient(180deg, transparent 0%, #000 38%);
+}
+
+.contact-help__hill {
+  position: absolute;
+  bottom: 0;
+  left: -5%;
+  right: -5%;
+  border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+  background: rgb(176 138 74 / 0.1);
+  filter: blur(1px);
+}
+
+.contact-help__hill--far {
+  height: 55%;
+  opacity: 0.55;
+}
+
+.contact-help__hill--near {
+  height: 38%;
+  left: 20%;
+  right: -8%;
+  background: rgb(156 116 52 / 0.12);
+}
+
+.contact-help__palms {
+  position: absolute;
+  right: 6%;
+  bottom: 18%;
+  width: 8rem;
+  height: 4.5rem;
+  background:
+    radial-gradient(ellipse 18% 70% at 20% 80%, rgb(90 70 40 / 0.22), transparent 70%),
+    radial-gradient(ellipse 14% 85% at 45% 70%, rgb(90 70 40 / 0.2), transparent 70%),
+    radial-gradient(ellipse 16% 75% at 72% 78%, rgb(90 70 40 / 0.18), transparent 70%);
+  filter: blur(0.8px);
+  opacity: 0.65;
+}
+
+.contact-help__contours {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  color: var(--color-gold);
+  opacity: 0.35;
+}
+
+.contact-help__contours path {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.05;
+}
+
+.contact-help__inner {
+  position: relative;
+  z-index: 1;
+  max-width: calc(var(--container-max) + 2 * var(--gutter));
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.contact-help__header {
+  max-width: 44rem;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.contact-help__eyebrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  margin: 0 0 1.35rem;
+  color: var(--color-gold-dark);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+}
+
+.contact-help__eyebrow::before,
+.contact-help__eyebrow::after {
+  content: '';
+  flex: 0 0 2.75rem;
+  height: 1px;
+  background: var(--color-gold);
+}
+
+.contact-help__eyebrow-icon {
+  flex-shrink: 0;
+  width: 1rem;
+  height: 1rem;
+  margin-right: -0.25rem;
+  color: var(--color-gold);
+  transform: rotate(28deg);
+}
+
+.contact-help__title {
+  margin: 0;
+  font-size: clamp(2.5rem, 1.15rem + 2.6vw, 3.75rem);
+  font-weight: 500;
+  letter-spacing: -0.015em;
+  line-height: 1.12;
+}
+
+.contact-help__title-line {
+  display: block;
+}
+
+.contact-help__title-line--accent {
+  color: var(--color-gold-deep);
+  font-style: italic;
+}
+
+.contact-help__lead {
+  max-width: 42rem;
+  margin: 1.15rem auto 0;
+  color: var(--color-text);
+  font-size: clamp(1.0625rem, 0.98rem + 0.22vw, 1.125rem);
+  line-height: 1.7;
+  text-wrap: balance;
+}
+
+.contact-help__paths {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0;
+  margin: clamp(3rem, 5vw, 4rem) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.contact-help__path {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.5rem clamp(1.25rem, 2.5vw, 2.25rem);
+  text-align: center;
+}
+
+.contact-help__separator {
+  position: absolute;
+  z-index: 0;
+  top: 12%;
+  bottom: 18%;
+  left: 0;
+  width: 1px;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgb(176 138 74 / 0.4) 18%,
+    rgb(176 138 74 / 0.4) 82%,
+    transparent 100%
+  );
+  pointer-events: none;
+}
+
+.contact-help__separator-icon {
+  position: absolute;
+  top: 46%;
+  left: 50%;
+  width: 0.95rem;
+  height: 0.95rem;
+  color: var(--color-gold);
+  background: var(--color-ivory);
+  transform: translate(-50%, -50%) rotate(28deg);
+}
+
+.contact-help__number {
+  position: absolute;
+  z-index: 0;
+  top: 3.6rem;
+  right: clamp(0.75rem, 2vw, 1.75rem);
+  color: rgb(198 164 103 / 0.32);
+  font-family: var(--font-display);
+  font-size: clamp(4rem, 2.8rem + 2vw, 5.5rem);
+  font-style: italic;
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  line-height: 0.85;
+  pointer-events: none;
+}
+
+.contact-help__seal {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 6rem;
+  height: 6rem;
+  margin-bottom: 1.35rem;
+  border: 1px solid rgb(176 138 74 / 0.55);
+  border-radius: 50%;
+  background: rgb(255 254 251 / 0.45);
+  color: var(--color-gold-deep);
+  box-shadow: inset 0 0 0 5px rgb(251 246 236 / 0.9);
+}
+
+.contact-help__seal svg {
+  width: 1.75rem;
+  height: 1.75rem;
+}
+
+.contact-help__path-title {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  color: var(--color-brown);
+  font-size: clamp(1.5rem, 1.2rem + 0.55vw, 1.875rem);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  line-height: 1.15;
+}
+
+.contact-help__path-text {
+  position: relative;
+  z-index: 1;
+  max-width: 18rem;
+  margin: 0.85rem 0 0;
+  color: var(--color-text);
+  font-size: clamp(0.9375rem, 0.9rem + 0.15vw, 1.03125rem);
+  line-height: 1.65;
+  text-wrap: pretty;
+}
+
+.contact-help__cta {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 1.35rem;
+  padding-bottom: 0.2rem;
+  border-bottom: 1px solid rgb(176 138 74 / 0.55);
+  color: var(--color-gold-deep);
+  font-size: 0.96875rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  line-height: 1.2;
+  text-decoration: none;
+  transition:
+    color var(--transition),
+    border-color var(--transition);
+}
+
+.contact-help__cta svg {
+  width: 1em;
+  height: 1em;
+  transition: transform var(--transition);
+}
+
+.contact-help__cta:hover {
+  color: var(--color-gold-dark);
+  border-bottom-color: var(--color-gold-dark);
+}
+
+.contact-help__cta:hover svg {
+  transform: translateX(3px);
+}
+
+.contact-help__cta:focus-visible {
+  outline: 2px solid rgb(156 116 52 / 0.45);
+  outline-offset: 4px;
+}
+
+@media (max-width: 1199.98px) {
+  .contact-help__seal {
+    width: 5.25rem;
+    height: 5.25rem;
+  }
+
+  .contact-help__number {
+    font-size: clamp(3.5rem, 2.5rem + 1.5vw, 4.5rem);
+  }
+
+  .contact-help__path {
+    padding-inline: 1rem;
+  }
+}
+
+@media (max-width: 1023.98px) {
+  .contact-help__paths {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    row-gap: 2.5rem;
+  }
+
+  .contact-help__path:nth-child(3) {
+    grid-column: 1 / -1;
+    max-width: 22rem;
+    margin-inline: auto;
+  }
+
+  .contact-help__path:nth-child(3) .contact-help__separator {
+    display: none;
+  }
+
+  .contact-help__title {
+    font-size: clamp(2.25rem, 1rem + 2.4vw, 3rem);
+  }
+
+  .contact-help__motif--left,
+  .contact-help__grains {
+    opacity: 0.1;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .contact-help {
+    padding-block: 3.25rem 4.5rem;
+  }
+
+  .contact-help__motif,
+  .contact-help__grains,
+  .contact-help__palms {
+    display: none;
+  }
+
+  .contact-help__eyebrow {
+    gap: 0.55rem;
+    margin-bottom: 1.15rem;
+    font-size: 0.75rem;
+    letter-spacing: 0.26em;
+  }
+
+  .contact-help__eyebrow::before,
+  .contact-help__eyebrow::after {
+    flex-basis: 1.75rem;
+  }
+
+  .contact-help__title {
+    font-size: clamp(2.5rem, 1.7rem + 2.8vw, 2.75rem);
+  }
+
+  .contact-help__lead {
+    font-size: 1.0625rem;
+  }
+
+  .contact-help__paths {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 0;
+    margin-top: 2.5rem;
+  }
+
+  .contact-help__path {
+    width: 100%;
+    max-width: 22rem;
+    padding: 1.75rem 0.5rem;
+  }
+
+  .contact-help__path + .contact-help__path {
+    border-top: 1px solid rgb(176 138 74 / 0.22);
+  }
+
+  .contact-help__separator {
+    display: none;
+  }
+
+  .contact-help__path:nth-child(3) {
+    max-width: 22rem;
+  }
+
+  .contact-help__number {
+    top: 2.75rem;
+    right: 0.5rem;
+    font-size: 3.5rem;
+  }
+
+  .contact-help__seal {
+    width: 5rem;
+    height: 5rem;
+    margin-bottom: 1.15rem;
+  }
+
+  .contact-help__landscape {
+    height: 5.5rem;
+    opacity: 0.7;
+  }
+}

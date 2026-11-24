@@ -1,0 +1,456 @@
+.rice-collection {
+  --rc-floor: color-mix(in srgb, var(--color-ivory) 72%, var(--color-cream));
+
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding-top: clamp(4.5rem, 8vw, 6.5rem);
+  background:
+    radial-gradient(
+      ellipse 32% 38% at 0% 38%,
+      rgb(214 178 108 / 0.16),
+      transparent 70%
+    ),
+    radial-gradient(
+      ellipse 32% 38% at 100% 38%,
+      rgb(214 178 108 / 0.16),
+      transparent 70%
+    ),
+    linear-gradient(
+      to bottom,
+      var(--color-ivory) 0%,
+      var(--rc-floor) 88%,
+      var(--rc-floor) 100%
+    );
+}
+
+.rice-collection__inner {
+  max-width: calc(var(--container-max) + 2 * var(--gutter));
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+/* Section header */
+.rice-collection__header {
+  max-width: 46rem;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.rice-collection__eyebrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin: 0 0 1.25rem;
+  color: var(--color-gold-dark);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+}
+
+.rice-collection__eyebrow::before,
+.rice-collection__eyebrow::after {
+  content: '';
+  flex: 0 0 3.5rem;
+  height: 1px;
+  background: var(--color-gold);
+}
+
+.rice-collection__title {
+  margin: 0;
+  font-size: clamp(2.625rem, 1.2rem + 3.2vw, 4.125rem);
+  font-weight: 500;
+  letter-spacing: -0.015em;
+  line-height: 1.08;
+}
+
+.rice-collection__title-line {
+  display: block;
+  text-wrap: balance;
+}
+
+.rice-collection__title-line--accent {
+  color: var(--color-gold-deep);
+}
+
+.rice-collection__lead {
+  max-width: 38rem;
+  margin: 1.25rem auto 0;
+  color: var(--color-text);
+  font-size: clamp(1rem, 0.9rem + 0.3vw, 1.125rem);
+  line-height: 1.65;
+}
+
+/* Product showcase */
+.rice-collection__list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(1.25rem, 3vw, 3.5rem);
+  max-width: 1200px;
+  margin: clamp(3rem, 5vw, 4.5rem) auto 0;
+  padding: 0;
+  list-style: none;
+}
+
+.rice-collection__product {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* Stage geometry is in container units (cqw = 1% of the stage width).
+   The window's semicircular top (radius 32cqw) sits 17cqw above the photo,
+   which keeps the arch clear of the bags' top corners. */
+.rice-collection__stage {
+  container-type: inline-size;
+  position: relative;
+  width: min(100%, 360px);
+  aspect-ratio: 100 / 120;
+}
+
+.rice-collection__arch {
+  position: absolute;
+  top: 0;
+  left: 12cqw;
+  width: 76cqw;
+  height: 108.5cqw;
+  border: 1px solid rgb(198 164 103 / 0.75);
+  border-bottom: 0;
+  border-radius: 38cqw 38cqw 0 0;
+  background: linear-gradient(
+    to bottom,
+    rgb(255 254 251 / 0.55) 0%,
+    rgb(243 231 207 / 0.55) 55%,
+    rgb(214 178 108 / 0.28) 100%
+  );
+}
+
+.rice-collection__window {
+  position: absolute;
+  z-index: 2;
+  top: 6cqw;
+  left: 18cqw;
+  width: 64cqw;
+  height: 102.5cqw;
+  overflow: hidden;
+  border-radius: 32cqw 32cqw 0 0;
+  background:
+    radial-gradient(
+      ellipse 70% 30% at 50% 0%,
+      rgb(214 178 108 / 0.28),
+      transparent 75%
+    ),
+    linear-gradient(
+      to bottom,
+      color-mix(in srgb, var(--color-brown) 75%, var(--color-gold-dark)),
+      var(--color-brown)
+    );
+}
+
+/* Photo area: 3:4, bottom-aligned in the window. */
+.rice-collection__frame {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 85.5cqw;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 2%);
+  mask-image: linear-gradient(to bottom, transparent 0, #000 2%);
+}
+
+.rice-collection__frame img {
+  position: absolute;
+  top: var(--img-y, 0%);
+  left: var(--img-x, 0%);
+  width: var(--img-w, 100%);
+  max-width: none;
+  height: auto;
+}
+
+/* Each photo frames its bag differently; these place every bag at the same
+   size (≈95% of the frame height) and centre it, without cropping it. */
+.rice-collection__frame--classic-1kg {
+  --img-w: 100%;
+  --img-x: 0%;
+  --img-y: 0%;
+}
+
+.rice-collection__frame--classic-26kg {
+  --img-w: 125.1%;
+  --img-x: -13.96%;
+  --img-y: -5.04%;
+}
+
+.rice-collection__frame--xxxl-26kg {
+  --img-w: 117.45%;
+  --img-x: -10.2%;
+  --img-y: -2.53%;
+}
+
+/* Stone plinth: an elliptical top face over a shallow body. */
+.rice-collection__plinth {
+  position: absolute;
+  z-index: 1;
+  top: 102cqw;
+  left: 5cqw;
+  width: 90cqw;
+  height: 17.5cqw;
+}
+
+.rice-collection__plinth::before,
+.rice-collection__plinth::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  left: 0;
+}
+
+.rice-collection__plinth::before {
+  top: 6.5cqw;
+  bottom: 0;
+  border-radius: 0 0 50% 50% / 0 0 6.5cqw 6.5cqw;
+  background: linear-gradient(
+    to bottom,
+    color-mix(in srgb, var(--color-cream) 80%, var(--color-gold)),
+    color-mix(in srgb, var(--color-cream) 62%, var(--color-gold))
+  );
+  box-shadow: 0 12px 18px -14px rgb(90 60 20 / 0.45);
+}
+
+.rice-collection__plinth::after {
+  top: 0;
+  height: 13cqw;
+  border-radius: 50%;
+  background: radial-gradient(
+    ellipse at 50% 35%,
+    var(--color-paper) 0%,
+    var(--color-cream) 70%,
+    color-mix(in srgb, var(--color-cream) 85%, var(--color-gold)) 100%
+  );
+  box-shadow: inset 0 0 0 1px rgb(198 164 103 / 0.35);
+}
+
+.rice-collection__sprig {
+  position: absolute;
+  z-index: 1;
+  bottom: 14cqw;
+  width: 20cqw;
+  height: auto;
+  color: var(--color-gold);
+  opacity: 0.5;
+}
+
+.rice-collection__sprig * {
+  stroke-width: 0.9px;
+  vector-effect: non-scaling-stroke;
+}
+
+.rice-collection__sprig--left {
+  left: 2cqw;
+  transform: rotate(-22deg);
+}
+
+.rice-collection__sprig--right {
+  right: 2cqw;
+  transform: rotate(22deg);
+}
+
+/* Product text */
+.rice-collection__name {
+  display: flex;
+  flex-direction: column;
+  margin: 1.25rem 0 0;
+  font-size: clamp(1.625rem, 1.2rem + 0.9vw, 2rem);
+  line-height: 1.15;
+}
+
+.rice-collection__weight {
+  margin-top: 0.2rem;
+  color: var(--color-gold-dark);
+  font-size: 0.625em;
+}
+
+.rice-collection__description {
+  max-width: 19rem;
+  margin: 0.75rem auto 0;
+  color: var(--color-text);
+  font-size: 0.9375rem;
+  line-height: 1.6;
+}
+
+.button.rice-collection__cta {
+  min-height: 2.625rem;
+  margin-top: 1.5rem;
+  padding: 0 1.125rem;
+  background: transparent;
+  font-size: 0.875rem;
+}
+
+.button.rice-collection__cta:hover {
+  background: rgb(198 164 103 / 0.12);
+}
+
+/* Decoration */
+.rice-collection__decor {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.rice-collection__motif {
+  position: absolute;
+  top: 2rem;
+  width: clamp(120px, 14vw, 200px);
+  height: auto;
+  color: var(--color-gold);
+  opacity: 0.22;
+}
+
+.rice-collection__motif * {
+  stroke-width: 0.8px;
+  vector-effect: non-scaling-stroke;
+}
+
+.rice-collection__motif--left {
+  left: -1.5rem;
+  transform: rotate(-32deg);
+}
+
+.rice-collection__motif--right {
+  right: -1.5rem;
+  transform: rotate(32deg);
+}
+
+.rice-collection__grain {
+  position: absolute;
+  width: 22px;
+  height: 5px;
+  border-radius: 50%;
+  background: linear-gradient(
+    90deg,
+    var(--color-paper),
+    color-mix(in srgb, var(--color-cream) 70%, var(--color-gold))
+  );
+  opacity: 0.7;
+}
+
+.rice-collection__grain--1 {
+  top: 9rem;
+  left: 12%;
+  transform: rotate(-35deg);
+}
+
+.rice-collection__grain--2 {
+  top: 14rem;
+  left: 7%;
+  transform: rotate(20deg);
+}
+
+.rice-collection__grain--3 {
+  top: 8rem;
+  right: 11%;
+  transform: rotate(40deg);
+}
+
+.rice-collection__grain--4 {
+  top: 15rem;
+  right: 6%;
+  transform: rotate(-15deg);
+}
+
+/* Bottom transition: a shallow ivory curve with a gold edge over a warm,
+   dark band. The ellipse's bottom border tapers naturally toward its ends. */
+.rice-collection__transition {
+  position: relative;
+  height: clamp(64px, 8vw, 116px);
+  margin-top: clamp(2.75rem, 5vw, 4.5rem);
+  overflow: hidden;
+  background:
+    radial-gradient(
+      ellipse 28% 140% at 12% 100%,
+      rgb(214 178 108 / 0.4),
+      transparent 70%
+    ),
+    radial-gradient(
+      ellipse 28% 140% at 88% 100%,
+      rgb(198 164 103 / 0.32),
+      transparent 70%
+    ),
+    linear-gradient(
+      to bottom,
+      color-mix(in srgb, var(--color-gold-dark) 55%, var(--color-brown)),
+      var(--color-brown)
+    );
+}
+
+.rice-collection__transition::before {
+  content: '';
+  position: absolute;
+  top: -80%;
+  left: -45%;
+  width: 160%;
+  height: 160%;
+  border-bottom: 2px solid var(--color-gold);
+  border-radius: 50%;
+  background: var(--rc-floor);
+}
+
+/* Tablet */
+@media (max-width: 1023.98px) {
+  .rice-collection__list {
+    gap: 1.25rem;
+  }
+
+  .rice-collection__description {
+    font-size: 0.875rem;
+  }
+}
+
+/* Mobile: one product per row */
+@media (max-width: 767.98px) {
+  .rice-collection__eyebrow {
+    gap: 0.6rem;
+    font-size: 0.6875rem;
+    letter-spacing: 0.24em;
+  }
+
+  .rice-collection__eyebrow::before,
+  .rice-collection__eyebrow::after {
+    flex-basis: 1.5rem;
+  }
+
+  .rice-collection__title {
+    font-size: clamp(2.375rem, 1.6rem + 3.4vw, 3rem);
+  }
+
+  .rice-collection__lead {
+    font-size: 1rem;
+  }
+
+  .rice-collection__list {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 4rem;
+  }
+
+  .rice-collection__stage {
+    width: min(100%, 330px);
+  }
+
+  .rice-collection__description {
+    font-size: 0.9375rem;
+  }
+
+  .rice-collection__motif {
+    width: 110px;
+  }
+
+  .rice-collection__grain--2,
+  .rice-collection__grain--4 {
+    display: none;
+  }
+}

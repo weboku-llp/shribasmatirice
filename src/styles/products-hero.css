@@ -1,0 +1,525 @@
+.products-hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: var(--color-ivory);
+}
+
+/* Warm stone light behind the showcase, fading into the cream copy area so
+   there is no hard split between the two halves. */
+.products-hero::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background:
+    radial-gradient(
+      ellipse 42% 70% at 74% 42%,
+      rgb(240 222 188 / 0.75),
+      rgb(240 222 188 / 0) 100%
+    ),
+    linear-gradient(
+      90deg,
+      rgb(251 246 236 / 0) 40%,
+      rgb(236 220 192 / 0.5) 100%
+    );
+  pointer-events: none;
+}
+
+.products-hero__motif {
+  position: absolute;
+  z-index: -1;
+  bottom: -1.5rem;
+  left: -1.25rem;
+  width: clamp(100px, 9vw, 140px);
+  height: auto;
+  color: var(--color-gold);
+  opacity: 0.26;
+  pointer-events: none;
+}
+
+.products-hero__inner {
+  display: grid;
+  grid-template-areas:
+    'copy stage'
+    'attributes stage';
+  grid-template-columns: minmax(0, 45fr) minmax(0, 55fr);
+  grid-template-rows: auto 1fr;
+  column-gap: clamp(2rem, 4.5vw, 4rem);
+  align-items: center;
+  max-width: calc(var(--container-max) + 2 * var(--gutter));
+  margin-inline: auto;
+  padding: clamp(2.5rem, 3.5vw, 3rem) var(--gutter) clamp(2.75rem, 4vw, 3.5rem);
+}
+
+/* Copy */
+.products-hero__copy {
+  grid-area: copy;
+  align-self: end;
+}
+
+.products-hero__eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 0 0 1.5rem;
+  color: var(--color-gold-dark);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+}
+
+.products-hero__eyebrow::before,
+.products-hero__eyebrow::after {
+  content: '';
+  flex: 0 0 2.75rem;
+  height: 1px;
+  background: var(--color-gold);
+}
+
+.products-hero__eyebrow-icon {
+  flex-shrink: 0;
+  width: 1rem;
+  height: 1rem;
+  margin-right: -0.25rem;
+  color: var(--color-gold);
+  transform: rotate(28deg);
+}
+
+.products-hero__title {
+  margin: 0;
+  font-size: clamp(2.75rem, 1rem + 3.9vw, 4.5rem);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.06;
+}
+
+.products-hero__title-line {
+  display: block;
+}
+
+.products-hero__title-line--accent {
+  color: var(--color-gold-deep);
+  font-style: italic;
+}
+
+.products-hero__tagline {
+  margin: 1.25rem 0 0;
+  color: var(--color-brown);
+  font-size: clamp(1.1875rem, 0.9rem + 0.6vw, 1.4375rem);
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.products-hero__lead {
+  max-width: 33rem;
+  margin: 1.1rem 0 0;
+  color: var(--color-text);
+  font-size: clamp(1rem, 0.92rem + 0.25vw, 1.0938rem);
+  line-height: 1.75;
+  text-wrap: pretty;
+}
+
+/* Attributes: four compact columns divided by hairlines, not cards */
+.products-hero__attributes {
+  display: grid;
+  grid-area: attributes;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  align-self: start;
+  max-width: 34rem;
+  margin: 2.25rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.products-hero__attribute {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 0.15rem 0.5rem;
+  text-align: center;
+}
+
+.products-hero__attribute + .products-hero__attribute {
+  border-left: 1px solid var(--color-border);
+}
+
+.products-hero__seal {
+  display: grid;
+  place-items: center;
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at 50% 40%,
+    rgb(243 231 207 / 0.8),
+    rgb(198 164 103 / 0.26)
+  );
+  color: var(--color-gold-deep);
+}
+
+.products-hero__seal svg {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.products-hero__attribute-label {
+  color: var(--color-brown);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+
+.products-hero__attribute-label span {
+  display: block;
+  white-space: nowrap;
+}
+
+/* Showcase stage. Everything inside is placed in container-width units so
+   the arch, steps and products keep their proportions at every size. */
+.products-hero__stage {
+  position: relative;
+  grid-area: stage;
+  aspect-ratio: 100 / 82;
+  container-type: inline-size;
+}
+
+.products-hero__arch-frame {
+  position: absolute;
+  top: 0;
+  left: 9cqw;
+  width: 82cqw;
+  height: 70cqw;
+  border-radius: 41cqw 41cqw 0 0;
+  background: linear-gradient(180deg, #f7efe0 0%, #eddfc6 100%);
+  box-shadow:
+    inset 0 0 0 1px rgb(176 138 74 / 0.22),
+    0 34px 60px -44px rgb(74 52 26 / 0.45);
+}
+
+.products-hero__arch {
+  position: absolute;
+  top: 4.5cqw;
+  left: 13.5cqw;
+  width: 73cqw;
+  height: 65.5cqw;
+  overflow: hidden;
+  border-radius: 36.5cqw 36.5cqw 0 0;
+  box-shadow: inset 0 0 0 1px rgb(176 138 74 / 0.3);
+}
+
+.products-hero__landscape {
+  width: 100%;
+  max-width: none;
+  height: 100%;
+  object-fit: cover;
+  object-position: 46% 30%;
+}
+
+/* A soft warm haze at the base of the view, where the steps begin */
+.products-hero__arch::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgb(255 236 200 / 0.08) 0%,
+    rgb(255 236 200 / 0) 45%,
+    rgb(240 224 196 / 0.55) 100%
+  );
+}
+
+.products-hero__stage-motif {
+  position: absolute;
+  width: 17cqw;
+  height: auto;
+  color: var(--color-gold);
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+.products-hero__stage-motif--left {
+  top: 30cqw;
+  left: -4cqw;
+  transform: rotate(-14deg);
+}
+
+.products-hero__stage-motif--right {
+  top: 8cqw;
+  right: -3cqw;
+  transform: scaleX(-1) rotate(-10deg);
+}
+
+/* Stone steps: a pale lit top surface over a deeper, softly veined front
+   face. Three levels so the bags stand at different heights. */
+.products-hero__step {
+  --top-face: 1.6cqw;
+
+  position: absolute;
+  border-radius: 0.35cqw;
+  background:
+    linear-gradient(
+      100deg,
+      transparent 18%,
+      rgb(255 255 255 / 0.28) 30%,
+      transparent 42%,
+      transparent 64%,
+      rgb(255 255 255 / 0.18) 74%,
+      transparent 84%
+    ),
+    linear-gradient(
+      180deg,
+      #fbf6ec 0,
+      #f2e7d3 var(--top-face),
+      #dccaa9 var(--top-face),
+      #e6d6ba 45%,
+      #d8c29d 100%
+    );
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 0.8),
+    inset 0 0 0 1px rgb(176 138 74 / 0.2),
+    0 2.4cqw 3cqw -2cqw rgb(74 52 26 / 0.45);
+}
+
+.products-hero__step--back {
+  top: 61cqw;
+  left: 14cqw;
+  width: 76cqw;
+  height: 8cqw;
+}
+
+.products-hero__step--plinth {
+  --top-face: 1.3cqw;
+
+  z-index: 2;
+  top: 56cqw;
+  left: 27cqw;
+  width: 40cqw;
+  height: 6cqw;
+}
+
+.products-hero__step--front {
+  --top-face: 1.9cqw;
+
+  z-index: 3;
+  top: 68.5cqw;
+  left: 5cqw;
+  width: 90cqw;
+  height: 10cqw;
+}
+
+/* Products. The client photographs include their own studio backdrop, so
+   each bag is outlined with a clip-path; the artwork itself is untouched. */
+.products-hero__product {
+  position: absolute;
+  filter: drop-shadow(0 1.6cqw 1.4cqw rgb(58 38 18 / 0.28));
+}
+
+.products-hero__product-image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.products-hero__product--xxxl-26kg {
+  z-index: 1;
+  top: 16.7cqw;
+  left: 48cqw;
+  width: 40cqw;
+}
+
+.products-hero__product--xxxl-26kg .products-hero__product-image {
+  clip-path: polygon(10.2% 9.8%, 11.6% 5.4%, 36.4% 5.4%, 50.9% 5.6%, 68.4% 5.3%, 89.1% 4.6%, 91.3% 5.9%, 91.4% 9.8%, 88.2% 11.2%, 86.2% 15.9%, 84.7% 24.4%, 83.8% 35%, 83.7% 46.4%, 83.7% 58.6%, 84.1% 68.4%, 85% 78.1%, 86.2% 85.5%, 87.9% 90.6%, 90.2% 93.5%, 72.8% 94.7%, 50.9% 95.2%, 29.1% 95%, 14.6% 94.3%, 15.1% 92.8%, 16.3% 87.9%, 17% 81.8%, 17.9% 73.3%, 18.3% 61.1%, 18.5% 48.8%, 18.3% 36.6%, 17.8% 26.9%, 16.4% 18.3%, 14.6% 13.4%, 13.1% 11.2%);
+}
+
+.products-hero__product--classic-26kg {
+  z-index: 2;
+  top: 5.6cqw;
+  left: 24.5cqw;
+  width: 47cqw;
+}
+
+.products-hero__product--classic-26kg .products-hero__product-image {
+  clip-path: polygon(14.7% 7.8%, 16.5% 7.3%, 35.6% 8.1%, 51.3% 8.3%, 68.4% 8.1%, 85.9% 7.6%, 87.5% 8.9%, 86% 11.2%, 82.9% 15.9%, 80.3% 24.4%, 78.3% 34.2%, 77.8% 46.4%, 77.8% 58.6%, 78.1% 70.8%, 79.1% 80.6%, 80.9% 86.7%, 83.8% 89.9%, 85.5% 91.6%, 71.2% 92.8%, 50.6% 93.3%, 31.3% 93%, 16% 92.6%, 14.8% 91.3%, 18.5% 88.5%, 21.1% 83%, 22.4% 73.3%, 23.1% 61.1%, 23.2% 48.8%, 22.9% 36.6%, 22.4% 26.9%, 21.2% 18.3%, 19.1% 12.8%, 16% 10.4%);
+}
+
+.products-hero__product--classic-1kg {
+  z-index: 4;
+  top: 40.6cqw;
+  left: 7cqw;
+  width: 22cqw;
+}
+
+.products-hero__product--classic-1kg .products-hero__product-image {
+  clip-path: polygon(5.9% 2.4%, 48.9% 2.2%, 92.8% 2.4%, 92.2% 7.1%, 89.3% 11%, 86.8% 19.5%, 85% 30.5%, 83.7% 42.7%, 83.1% 54.9%, 83.1% 67.2%, 83.7% 78.1%, 85.3% 87.9%, 88.3% 94%, 90.9% 95%, 91.2% 98.3%, 48.9% 98.7%, 6.2% 98.4%, 6.5% 95%, 10.4% 93%, 14% 85.5%, 15.1% 75.7%, 15.8% 63.5%, 15.6% 51.3%, 15% 39.1%, 14% 26.9%, 12.4% 17.1%, 10.1% 10%, 7.2% 7.1%);
+}
+
+/* Foreground still life on the front step */
+.products-hero__bowl {
+  position: absolute;
+  z-index: 4;
+  top: 54.5cqw;
+  left: 54cqw;
+  width: 36cqw;
+  max-width: none;
+  height: auto;
+  filter: drop-shadow(0 0.9cqw 1cqw rgb(58 38 18 / 0.24));
+  -webkit-mask-image: radial-gradient(
+    ellipse 58% 62% at 50% 46%,
+    #000 48%,
+    transparent 78%
+  );
+  mask-image: radial-gradient(
+    ellipse 58% 62% at 50% 46%,
+    #000 48%,
+    transparent 78%
+  );
+  pointer-events: none;
+}
+
+.products-hero__grains {
+  position: absolute;
+  z-index: 4;
+  top: 68.6cqw;
+  left: 27cqw;
+  width: 30cqw;
+  height: auto;
+  fill: #fffdf6;
+  stroke: rgb(176 138 74 / 0.45);
+  stroke-width: 0.35;
+  pointer-events: none;
+}
+
+/* Compact desktop */
+@media (max-width: 1199.98px) {
+  .products-hero__eyebrow {
+    margin-bottom: 1.25rem;
+  }
+
+  .products-hero__attribute {
+    padding-inline: 0.3rem;
+  }
+
+  .products-hero__attribute-label {
+    font-size: 0.625rem;
+    letter-spacing: 0.08em;
+  }
+
+  .products-hero__seal {
+    width: 3.125rem;
+    height: 3.125rem;
+  }
+
+  .products-hero__seal svg {
+    width: 1.375rem;
+    height: 1.375rem;
+  }
+}
+
+/* Tablet and below: copy, then the showcase, then the attributes */
+@media (max-width: 1023.98px) {
+  .products-hero::before {
+    background:
+      radial-gradient(
+        ellipse 70% 40% at 50% 62%,
+        rgb(240 222 188 / 0.7),
+        rgb(240 222 188 / 0) 100%
+      );
+  }
+
+  .products-hero__inner {
+    grid-template-areas:
+      'copy'
+      'stage'
+      'attributes';
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto;
+    row-gap: 2.5rem;
+    padding-block: 3rem 3.5rem;
+  }
+
+  .products-hero__copy {
+    max-width: 38rem;
+  }
+
+  .products-hero__stage {
+    width: min(100%, 36rem);
+    justify-self: center;
+  }
+
+  .products-hero__attributes {
+    justify-self: center;
+    width: 100%;
+    max-width: 36rem;
+    margin-top: 0;
+  }
+
+  .products-hero__attribute-label {
+    font-size: 0.6875rem;
+    letter-spacing: 0.14em;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .products-hero__eyebrow {
+    gap: 0.6rem;
+    margin-bottom: 1.15rem;
+    font-size: 0.75rem;
+    letter-spacing: 0.26em;
+  }
+
+  .products-hero__eyebrow::before,
+  .products-hero__eyebrow::after {
+    flex-basis: 1.75rem;
+  }
+
+  .products-hero__lead {
+    font-size: 1rem;
+  }
+
+  .products-hero__motif {
+    display: none;
+  }
+
+  .products-hero__step {
+    box-shadow: 0 14px 22px -18px rgb(74 52 26 / 0.45);
+  }
+}
+
+/* Phones: attributes in a 2 × 2 grid */
+@media (max-width: 599.98px) {
+  .products-hero__inner {
+    row-gap: 2rem;
+    padding-block: 2.5rem 3rem;
+  }
+
+  /* The showcase runs edge to edge so the bags stay legible */
+  .products-hero__stage {
+    width: calc(100% + 2 * var(--gutter));
+    max-width: none;
+  }
+
+  .products-hero__attributes {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .products-hero__attribute {
+    padding: 0.95rem 0.5rem;
+  }
+
+  .products-hero__attribute + .products-hero__attribute {
+    border-left: 0;
+  }
+
+  .products-hero__attribute:nth-child(even) {
+    border-left: 1px solid var(--color-border);
+  }
+
+  .products-hero__attribute:nth-child(n + 3) {
+    border-top: 1px solid var(--color-border);
+  }
+}

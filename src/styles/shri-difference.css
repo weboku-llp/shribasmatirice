@@ -1,0 +1,442 @@
+.difference {
+  --df-content: 50%;
+  --df-media: 54%;
+
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border-top: 1px solid var(--color-border);
+  background:
+    radial-gradient(
+      ellipse 30% 55% at 46% 38%,
+      rgb(255 254 251 / 0.85),
+      transparent 70%
+    ),
+    var(--color-ivory);
+}
+
+/* Photograph: fills the right side down to the section's foot (the trust
+   strip overlaps its lower edge) and dissolves into the cream on its left. */
+.difference__media {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: var(--df-media);
+  overflow: hidden;
+  background:
+    radial-gradient(
+      ellipse 60% 55% at 35% 30%,
+      rgb(255 248 232 / 0.9),
+      transparent 70%
+    ),
+    linear-gradient(
+      160deg,
+      var(--color-cream),
+      color-mix(in srgb, var(--color-cream) 75%, var(--color-gold))
+    );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0,
+    rgb(0 0 0 / 0.45) 9%,
+    rgb(0 0 0 / 0.85) 18%,
+    #000 26%
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent 0,
+    rgb(0 0 0 / 0.45) 9%,
+    rgb(0 0 0 / 0.85) 18%,
+    #000 26%
+  );
+}
+
+/* The photo stops short of the section's foot so the scene reads a little
+   wider; the trust strip hides the remaining band beneath it. */
+.difference__image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  max-width: none;
+  height: 93%;
+  object-fit: cover;
+  object-position: 74% 45%;
+  -webkit-mask-image: linear-gradient(to bottom, #000 90%, transparent);
+  mask-image: linear-gradient(to bottom, #000 90%, transparent);
+}
+
+.difference__image[data-missing] {
+  visibility: hidden;
+}
+
+/* Left content */
+.difference__content {
+  width: var(--df-content);
+  padding: clamp(4.5rem, 7vw, 6rem) clamp(1.5rem, 3vw, 3rem)
+    clamp(3.25rem, 5vw, 4.5rem)
+    max(var(--gutter), calc((100% - var(--container-max)) / 2 + 3rem));
+}
+
+.difference__eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 0 0 1.5rem;
+  color: var(--color-gold-dark);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+}
+
+.difference__eyebrow::after {
+  content: '';
+  flex: 0 1 7rem;
+  height: 1px;
+  background: var(--color-gold);
+}
+
+.difference__eyebrow-icon {
+  flex-shrink: 0;
+  width: 1rem;
+  height: 1rem;
+  color: var(--color-gold);
+  transform: rotate(28deg);
+}
+
+.difference__title {
+  margin: 0;
+  font-size: clamp(2.375rem, 0.9rem + 2.9vw, 3.375rem);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  line-height: 1.12;
+}
+
+.difference__title-line {
+  display: block;
+  text-wrap: balance;
+}
+
+.difference__title-line--accent {
+  color: var(--color-gold-deep);
+  font-style: italic;
+}
+
+.difference__lead {
+  max-width: 33rem;
+  margin: 1.25rem 0 0;
+  color: var(--color-text);
+  font-size: clamp(1rem, 0.94rem + 0.2vw, 1.0625rem);
+  line-height: 1.65;
+}
+
+/* Brand values */
+.difference__values {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.5rem clamp(0.75rem, 3.2vw - 1.25rem, 1.75rem);
+  margin: 2.5rem calc(-1 * clamp(1rem, 2.5vw - 0.5rem, 2.25rem)) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.difference__value {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.difference__seal {
+  display: grid;
+  place-items: center;
+  width: 4.25rem;
+  height: 4.25rem;
+  border: 1px solid var(--color-gold);
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at 50% 40%,
+    var(--color-paper),
+    rgb(243 231 207 / 0.6)
+  );
+  box-shadow:
+    inset 0 0 0 4px var(--color-paper),
+    inset 0 0 0 5px rgb(198 164 103 / 0.35);
+  color: var(--color-gold-deep);
+}
+
+.difference__seal svg {
+  width: 1.75rem;
+  height: 1.75rem;
+}
+
+.difference__value-title {
+  margin: 0.9rem 0 0;
+  font-size: 1rem;
+  line-height: 1.25;
+}
+
+.difference__value-text {
+  max-width: 10.5rem;
+  margin: 0.4rem 0 0;
+  color: var(--color-muted);
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  text-wrap: pretty;
+}
+
+/* Trust strip */
+.difference__strip {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  margin-inline: clamp(0.5rem, 0.8vw, 0.75rem);
+  padding: clamp(2rem, 3vw, 2.75rem) var(--gutter) clamp(1.75rem, 2.5vw, 2.25rem);
+  border: 1px solid var(--color-border);
+  border-bottom: 0;
+  border-radius: 2rem 2rem 0 0;
+  background:
+    linear-gradient(
+      to top,
+      rgb(214 178 108 / 0.1),
+      transparent 45%
+    ),
+    color-mix(in srgb, var(--color-paper) 55%, var(--color-ivory));
+}
+
+.difference__strip-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin: 0;
+  color: var(--color-gold-dark);
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  line-height: 1.4;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.difference__strip-label::before,
+.difference__strip-label::after {
+  content: '';
+  flex: 0 0 clamp(2rem, 6vw, 5.5rem);
+  height: 1px;
+  background: var(--color-gold);
+}
+
+.difference__points {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  max-width: 980px;
+  margin: 1.75rem auto 0;
+  padding: 0;
+  list-style: none;
+}
+
+.difference__point {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-inline: 0.75rem;
+  text-align: center;
+}
+
+.difference__point:not(:first-child)::before {
+  content: '';
+  position: absolute;
+  top: 18%;
+  bottom: 18%;
+  left: 0;
+  width: 1px;
+  background: rgb(198 164 103 / 0.5);
+}
+
+.difference__point-icon {
+  color: var(--color-gold-deep);
+}
+
+.difference__point-icon svg {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.difference__point-title {
+  margin-top: 0.6rem;
+  color: var(--color-brown);
+  font-family: var(--font-display);
+  font-size: clamp(1.375rem, 1.1rem + 0.6vw, 1.75rem);
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  line-height: 1.15;
+  text-transform: uppercase;
+}
+
+.difference__point-caption {
+  margin-top: 0.35rem;
+  color: var(--color-muted);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  line-height: 1.45;
+  text-transform: uppercase;
+}
+
+.difference__strip-decor {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.difference__motif {
+  position: absolute;
+  bottom: -0.5rem;
+  width: clamp(80px, 8.5vw, 130px);
+  height: auto;
+  color: var(--color-gold);
+  opacity: 0.35;
+}
+
+.difference__motif--left {
+  left: -0.75rem;
+}
+
+.difference__motif--right {
+  right: -0.75rem;
+  transform: scaleX(-1);
+}
+
+/* Tablet: text keeps a little more room; values become 2 × 2 */
+@media (max-width: 1023.98px) {
+  .difference {
+    --df-content: 54%;
+    --df-media: 50%;
+  }
+
+  .difference__eyebrow {
+    gap: 0.6rem;
+    font-size: 0.75rem;
+    letter-spacing: 0.26em;
+  }
+
+  .difference__eyebrow::after {
+    flex-basis: 3rem;
+  }
+
+  .difference__image {
+    object-position: 60% 45%;
+  }
+
+  .difference__values {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 0.75rem;
+    max-width: 24rem;
+    margin-right: 0;
+  }
+
+  .difference__point-caption {
+    letter-spacing: 0.14em;
+  }
+}
+
+/* Mobile: text, then a landscape photograph, then the trust strip */
+@media (max-width: 767.98px) {
+  .difference__content {
+    width: 100%;
+    padding: 3.75rem var(--gutter) 2.75rem;
+  }
+
+  .difference__eyebrow {
+    font-size: 0.6875rem;
+    letter-spacing: 0.24em;
+  }
+
+  .difference__title {
+    font-size: clamp(2rem, 1.25rem + 3.4vw, 2.75rem);
+  }
+
+  .difference__value-title {
+    font-size: 1.0625rem;
+  }
+
+  .difference__lead {
+    font-size: 1rem;
+  }
+
+  .difference__values {
+    gap: 2rem 1rem;
+    max-width: none;
+  }
+
+  .difference__value-text {
+    font-size: 0.875rem;
+  }
+
+  .difference__media {
+    position: relative;
+    z-index: 0;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    -webkit-mask-image: linear-gradient(
+      to bottom,
+      transparent 0,
+      rgb(0 0 0 / 0.7) 7%,
+      #000 14%
+    );
+    mask-image: linear-gradient(
+      to bottom,
+      transparent 0,
+      rgb(0 0 0 / 0.7) 7%,
+      #000 14%
+    );
+  }
+
+  .difference__image {
+    height: 100%;
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+
+  .difference__strip {
+    z-index: 1;
+    margin-top: -2.5rem;
+    padding: 2rem 1rem 2.25rem;
+    border-radius: 1.5rem 1.5rem 0 0;
+  }
+
+  .difference__strip-label {
+    gap: 0.6rem;
+    font-size: 0.6875rem;
+    letter-spacing: 0.14em;
+  }
+
+  .difference__strip-label::before,
+  .difference__strip-label::after {
+    flex-basis: 1.25rem;
+  }
+
+  .difference__point-caption {
+    letter-spacing: 0.1em;
+  }
+
+  .difference__points {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    row-gap: 1.75rem;
+  }
+
+  .difference__point:nth-child(odd)::before {
+    content: none;
+  }
+
+  .difference__motif {
+    width: 80px;
+    opacity: 0.25;
+  }
+}

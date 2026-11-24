@@ -1,0 +1,250 @@
+:root {
+  --color-paper: #fffefb;
+  --color-ivory: #fbf6ec;
+  --color-cream: #f3e7cf;
+  --color-gold: #c6a467;
+  --color-gold-deep: #9c7434;
+  --color-gold-dark: #7a5620;
+  --color-brown: #2a1d12;
+  --color-text: #4a3c30;
+  --color-muted: #6e5e50;
+  --color-green: #2f4a2c;
+  --color-border: rgb(176 138 74 / 0.28);
+
+  --font-display: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  --font-body: 'Manrope', system-ui, -apple-system, 'Segoe UI', Roboto,
+    sans-serif;
+
+  --container-max: 1320px;
+  --gutter: clamp(1.25rem, 4vw, 3rem);
+  --header-height: 92px;
+  --radius: 8px;
+  --transition: 180ms ease;
+
+  color-scheme: light;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--color-ivory);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  line-height: 1.5;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3 {
+  color: var(--color-brown);
+  font-family: var(--font-display);
+  font-weight: 500;
+  line-height: 1.1;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-gold-dark);
+  outline-offset: 3px;
+}
+
+@media (max-width: 1023.98px) {
+  :root {
+    --header-height: 76px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-delay: 0ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@keyframes reveal-up {
+  from {
+    opacity: 0;
+    transform: translateY(1.15rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes reveal-fade {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+html.motion .site-header {
+  animation: reveal-fade 0.55s ease both;
+}
+
+html.motion .site-main > *:not([data-reveal='in']),
+html.motion .site-footer:not([data-reveal='in']) {
+  opacity: 0;
+  transform: translateY(1.15rem);
+}
+
+html.motion .site-main > [data-reveal='in'],
+html.motion .site-footer[data-reveal='in'] {
+  animation: reveal-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: var(--reveal-delay, 0ms);
+}
+
+@keyframes card-in {
+  from {
+    opacity: 0;
+    transform: translateY(0.75rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes card-fade {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+html.motion .site-main :is(
+  .rice-collection__product,
+  .products-collection__item,
+  .products-collection__strip-item,
+  .hero__attribute,
+  .products-hero__attribute,
+  .quality-hero__pillar,
+  .quality-standard__feature,
+  .quality-story__item,
+  .journey__step,
+  .difference__point,
+  .grain-table__step,
+  .our-story__value,
+  .why-partner__reason,
+  .dealer-process__step,
+  .contact-help__path,
+  .contact-form-section__detail,
+  .contact-form-section__form-panel,
+  .dealer-enquiry__form-panel,
+  .visit-us__detail,
+  .visit-us__map-card,
+  .philosophy__quote-panel
+):not([data-card='in']) {
+  opacity: 0;
+  transform: translateY(0.75rem);
+}
+
+html.motion .quality-process__step:not([data-card='in']) {
+  opacity: 0;
+}
+
+html.motion .site-main :is(
+  .rice-collection__product,
+  .products-collection__item,
+  .products-collection__strip-item,
+  .hero__attribute,
+  .products-hero__attribute,
+  .quality-hero__pillar,
+  .quality-process__step,
+  .quality-standard__feature,
+  .quality-story__item,
+  .journey__step,
+  .difference__point,
+  .grain-table__step,
+  .our-story__value,
+  .why-partner__reason,
+  .dealer-process__step,
+  .contact-help__path,
+  .contact-form-section__detail,
+  .contact-form-section__form-panel,
+  .dealer-enquiry__form-panel,
+  .visit-us__detail,
+  .visit-us__map-card,
+  .philosophy__quote-panel
+)[data-card='in'] {
+  animation: card-in 0.72s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: var(--card-delay, 0ms);
+}
+
+html.motion .quality-process__step[data-card='in'] {
+  animation-name: card-fade;
+}
+
+@media (hover: hover) {
+  html.motion :is(
+    .contact-help__path,
+    .quality-standard__feature,
+    .quality-hero__pillar,
+    .quality-story__item,
+    .why-partner__reason,
+    .difference__point,
+    .our-story__value,
+    .rice-collection__product
+  )[data-card='in'] {
+    transition: transform 220ms ease;
+  }
+
+  html.motion :is(
+    .contact-help__path,
+    .quality-standard__feature,
+    .quality-hero__pillar,
+    .quality-story__item,
+    .why-partner__reason,
+    .difference__point,
+    .our-story__value,
+    .rice-collection__product
+  )[data-card='in']:hover {
+    transform: translateY(-4px);
+  }
+}
+
+.site-layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.site-main {
+  flex: 1;
+}
+
+/* Placeholder pages render a bare h1 until they are designed. */
+.site-main > h1 {
+  max-width: calc(var(--container-max) + 2 * var(--gutter));
+  margin: 3rem auto;
+  padding-inline: var(--gutter);
+}
