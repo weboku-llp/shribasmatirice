@@ -198,9 +198,31 @@
   padding: 1.15rem var(--gutter);
 }
 
+.site-footer__legal {
+  display: grid;
+  gap: 0.35rem;
+}
+
 .site-footer__copyright {
   margin: 0;
   font-size: 0.875rem;
+}
+
+.site-footer__credit {
+  margin: 0;
+  color: rgb(251 246 236 / 0.72);
+  font-size: 0.8125rem;
+}
+
+.site-footer__credit-link {
+  color: var(--color-gold);
+  font-weight: 500;
+  text-decoration: none;
+  transition: color var(--transition);
+}
+
+.site-footer__credit-link:hover {
+  color: var(--color-cream);
 }
 
 .site-footer__motto {

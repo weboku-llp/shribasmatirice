@@ -150,9 +150,22 @@ function Footer() {
 
       <div className="site-footer__bar">
         <div className="site-footer__bar-inner">
-          <p className="site-footer__copyright">
-            &copy; {currentYear} Shri Shri Basmati Rice. All rights reserved.
-          </p>
+          <div className="site-footer__legal">
+            <p className="site-footer__copyright">
+              &copy; {currentYear} Shri Shri Basmati Rice. All rights reserved.
+            </p>
+            <p className="site-footer__credit">
+              Developed by{' '}
+              <a
+                href="https://weboku.com"
+                className="site-footer__credit-link"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Weboku
+              </a>
+            </p>
+          </div>
           <p className="site-footer__motto">
             <LeafIcon className="site-footer__motto-icon" />
             A Healthier Tomorrow, Together.
